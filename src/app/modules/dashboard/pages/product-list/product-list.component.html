@@ -1,8 +1,40 @@
-<button (click)="sortButtonLow()">Low to High</button>
-<button (click)="sortButtonHigh()">High to Low</button>
-<button (click)="sortButtonName()">Name</button>
 
-<div *ngFor="let prod of products">
-    <app-product-item [product]="prod"></app-product-item>
+
+<select name="selectPrice" class="form-control-mb-12" (change)="modo($event)">
+    <option value="lowestPrice">Lowest Price</option>
+    <option value="highestPrice">Highest Price </option>
+    <option value="priceRange1">P1 - P100</option>
+    <option value="priceRange2">P101 - P500</option>
+    <option value="priceRange3">P501 - P1000</option>
+    <option value="priceRange4">P1000+ up</option>
+</select>
+
+  <mat-form-field>
+    <mat-label>Select Price Range</mat-label>
+    <mat-select id="selected" (selectionChange)="modo($event)">
+      <mat-option value="lowestPrice">Lowest to  Highest</mat-option>
+      <mat-option value="hightestPrice">Highest to  Lowest</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+
+<select id="selectCategory" class="form-control-mb-12" (change)="modo($event)">
+    <option value="Category" disabled>By Category</option>
+    <option value="Groceries" >Groceries</option>
+    <option value="Appliances" >Appliances</option>
+    <option value="Accessories" >Accessories</option>
+    </select>
+
+
+<div class="container">
+    <div class="row">
+            <ng-container *ngFor="let prod of products">
+                <div class="col-md-4" >
+                <app-product-item [product]="prod"></app-product-item>
+                <button  (click)="addToCart(prod)"> Add to Cart </button>
+            </div>
+            </ng-container>
+    </div>
 </div>
 

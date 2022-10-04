@@ -8,8 +8,15 @@ import { CheckoutListComponent } from './pages/checkout-list/checkout-list.compo
 import { CheckoutItemComponent } from './components/checkout-item/checkout-item.component';
 import { PendingListComponent } from './pages/pending-list/pending-list.component';
 import { ProductRoutingModule } from './product-routing.module';
+import { MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'
 
-
+const MatComponents = [
+  MatSelectModule,
+  MatFormFieldModule,
+  MatSlideToggleModule
+]
 
 @NgModule({
   declarations: [
@@ -20,10 +27,12 @@ import { ProductRoutingModule } from './product-routing.module';
     CheckoutListComponent,
     CheckoutItemComponent,
     PendingListComponent
+   
   ],
   imports: [
     CommonModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    [MatComponents]
   ]
 })
 export class ProductModule { }

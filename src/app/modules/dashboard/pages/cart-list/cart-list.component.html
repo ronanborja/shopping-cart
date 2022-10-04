@@ -1,1 +1,49 @@
-<p>cart-list works!</p>
+<ng-container >
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Product Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let prod of products">
+                            <td>{{prod.productId}}</td>
+                            <td>{{prod.productName}}</td>
+                            <td>{{prod.productDescription}}</td>
+                            <td><strong>{{prod.productPrice}}</strong></td>
+                            <td>
+                                <div class="content">
+                                    <button  type="button" class="btn"><i class="fa fa-plus"></i></button>
+                                        <span>{{prod.quantity}}</span>
+                                        <button type="button" class="btn"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </td>
+                            <td>{{prod.total}}</td>
+                            <td>
+                                <button (click)="removeItem(prod)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td> 
+                                <button class ="btn btn-sucess">Checkout</button>
+                            </td>
+                            <td> 
+                                <strong> Total : ${{total}} </strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>

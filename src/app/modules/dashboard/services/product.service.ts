@@ -35,9 +35,24 @@ getProductsFilteredPriceHigh(): Observable<Product[]> {
   return this.http.get<Product[]>(`${this.env}/product`).pipe<Product[]>(
     map((product: Product[]) => {
       return product.sort((low, high) => 
-        Number(high.productPrice) - Number(low.productPrice))
+        Number(high.productPrice) - Number(low.productPrice)) 
     })
   );
+}
+
+getProductsFilteredPriceThousandUp(): Observable<Product[]> {
+  return this.getProductsFilteredLow().pipe(
+    map((products: Product[]) => {
+      return products.filter(product => product.productPrice > 1000) 
+    }));
+}
+
+getProductsFilteredPrice(min:number,max:number): Observable<Product[]> {
+  
+  return this.getProductsFilteredLow().pipe(
+    map((products: Product[]) => {
+      return products.filter(product => product.productPrice >= min && product.productPrice <=max) 
+    }));
 }
 
 getProductsFilteredByName(): Observable<Product[]> {
