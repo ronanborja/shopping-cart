@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartListComponent } from './modules/dashboard/pages/cart-list/cart-list.component';
-import { ShippingFormComponent } from './modules/dashboard/pages/shipping-form/shipping-form.component';
 import { CheckoutListComponent } from './modules/dashboard/pages/checkout-list/checkout-list.component';
 import { ShippingListComponent } from './modules/dashboard/pages/shipping-list/shipping-list.component';
-
+import {ShippingFormComponent} from './modules/dashboard/pages/shipping-form/shipping-form.component'
 const routes: Routes = [
   {
     path: '',
