@@ -5,6 +5,7 @@ import { RegistrationFormComponent } from './pages/registration-form/registratio
 import { EditFormComponent } from './pages/edit-form/edit-form.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ProfileRoutingModule } from './profile-routing.module';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 
 
@@ -17,7 +18,9 @@ import { ProfileRoutingModule } from './profile-routing.module';
   ],
   imports: [
     CommonModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ProfileModule { }

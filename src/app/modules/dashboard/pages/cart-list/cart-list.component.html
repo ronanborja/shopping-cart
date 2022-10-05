@@ -1,9 +1,9 @@
 <ng-container >
-    <div class="container">
-        <div class="card-table">
+    <div class="container grid place-items-center">
+        <div class="card-table bg-slate-100 drop-shadow-md">
             <div class="cart-product">
                 <table class="table table-responsive">
-                    <thead>
+                    <thead class="bg-slate-700 text-white">
                         <tr>
                             <th>Sr.No</th>
                             <th>Product Name</th>
@@ -14,7 +14,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="">
                         <tr *ngFor="let prod of products">
                             <td>{{prod.productId}}</td>
                             <td>{{prod.productName}}</td>
@@ -22,9 +22,9 @@
                             <td><strong>{{prod.productPrice}}</strong></td>
                             <td>
                                 <div class="content">
-                                    <button  type="button" class="btn"><i class="fa fa-plus"></i></button>
+                                    <button  type="button" class="btn hover:bg-orange-700"><i class="fa fa-plus text-white "></i></button>
                                         <span>{{prod.quantity}}</span>
-                                        <button type="button" class="btn"><i class="fa fa-minus"></i></button>
+                                        <button type="button" class="btn hover:bg-orange-700"><i class="fa fa-minus text-white "></i></button>
                                 </div>
                             </td>
                             <td>{{prod.total}}</td>
@@ -35,7 +35,7 @@
                         <tr>
                             <td colspan="4"></td>
                             <td> 
-                                <button class ="btn btn-sucess">Checkout</button>
+                                <button routerLink="/checkout" class ="btn btn-success">Checkout</button>
                             </td>
                             <td> 
                                 <strong> Total : ${{total}} </strong>

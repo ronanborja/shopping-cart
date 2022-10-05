@@ -1,40 +1,55 @@
+<div class="flex justify-between p-4">
+  <div>
+    <mat-slide-toggle (click)="toggleDarkTheme()"
+      >Toggle dark theme</mat-slide-toggle
+    >
+  </div>
 
-
-<select name="selectPrice" class="form-control-mb-12" (change)="modo($event)">
-    <option value="lowestPrice">Lowest Price</option>
-    <option value="highestPrice">Highest Price </option>
-    <option value="priceRange1">P1 - P100</option>
-    <option value="priceRange2">P101 - P500</option>
-    <option value="priceRange3">P501 - P1000</option>
-    <option value="priceRange4">P1000+ up</option>
-</select>
-
-  <mat-form-field>
-    <mat-label>Select Price Range</mat-label>
-    <mat-select id="selected" (selectionChange)="modo($event)">
-      <mat-option value="lowestPrice">Lowest to  Highest</mat-option>
-      <mat-option value="hightestPrice">Highest to  Lowest</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-
-
-<select id="selectCategory" class="form-control-mb-12" (change)="modo($event)">
-    <option value="Category" disabled>By Category</option>
-    <option value="Groceries" >Groceries</option>
-    <option value="Appliances" >Appliances</option>
-    <option value="Accessories" >Accessories</option>
+  <div class="border border-2">
+    <select
+      id="selectedPrice"
+      class="form-control-mb-12"
+      (change)="priceFilterChange($event)"
+    >
+      <option disabled>By Price</option>
+      <option value="0">All</option>
+      <option value="1">P1 - P100</option>
+      <option value="2">P101 - P500</option>
+      <option value="3">P501 - P1000</option>
+      <option value="4">P1000+ up</option>
     </select>
 
+    <select class="form-control-mb-12" (change)="orderByPriceChange($event)">
+      <option disabled>By Price</option>
+      <option value="0">Default</option>
+      <option value="1">Lowest to Highest</option>
+      <option value="2">Highest to Lowest</option>
+    </select>
 
-<div class="container">
-    <div class="row">
-            <ng-container *ngFor="let prod of products">
-                <div class="col-md-4" >
-                <app-product-item [product]="prod"></app-product-item>
-                <button  (click)="addToCart(prod)"> Add to Cart </button>
-            </div>
-            </ng-container>
-    </div>
+    <select class="form-control-mb-12" (change)="orderByNameChange($event)">
+      <option disabled>By Name</option>
+      <option value="0">Default</option>
+      <option value="1">Ascending</option>
+      <option value="2">Descending</option>
+    </select>
+
+    <select class="form-control-mb-12" (change)="categoryFilterChange($event)">
+      <option disable>By Category</option>
+      <option value="">All</option>
+      <option *ngFor="let category of categories">
+        {{ category }}
+      </option>
+    </select>
+  </div>
 </div>
 
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let prod of products">
+      <div class="card col-md-3">
+        <br /><app-product-item [product]="prod"></app-product-item>
+        <button (click)="addToCart(prod)">Add to Cart</button><br />
+      </div>
+    </ng-container>
+  </div>
+</div>

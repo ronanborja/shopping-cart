@@ -1,12 +1,7 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-<br>
-<h5 style="white-space: nowrap; overflow:hidden; text-overflow:ellipsis; max-width: 100ch ;">{{product?.productName}}<br></h5>
-<p>{{product?.productDescription}}<br></p>
-<p>{{product?.productPrice}}<br></p>
-<p>{{product?.productCategory}}<br></p>
-<br>
-    </div>
-</div>
-</div>
+
+    
+        <img src="{{product?.productImgUrl}}" alt="">
+        <h3 style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;max-width: 100ch;">{{product?.productName}}</h3>
+        <p style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 100ch;">{{product?.productDescription}}</p>
+        <p><strong>{{product?.productPrice | currency: 'PHP'}}</strong></p>
+            

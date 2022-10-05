@@ -10,7 +10,13 @@ import { PendingListComponent } from './pages/pending-list/pending-list.componen
 import { ProductRoutingModule } from './product-routing.module';
 import { MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle'
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { CheckoutFormComponent } from './pages/checkout-form/checkout-form.component'
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ShippingFormComponent } from './pages/shipping-form/shipping-form.component';
+import { ShippingItemComponent } from './components/shipping-item/shipping-item.component';
+import { ShippingListComponent } from './pages/shipping-list/shipping-list.component';
+import { RouterModule } from '@angular/router';
 
 const MatComponents = [
   MatSelectModule,
@@ -26,13 +32,19 @@ const MatComponents = [
     CartItemComponent,
     CheckoutListComponent,
     CheckoutItemComponent,
-    PendingListComponent
-   
+    PendingListComponent,
+    CheckoutFormComponent,
+    ShippingFormComponent,
+    ShippingItemComponent,
+    ShippingListComponent
   ],
   imports: [
     CommonModule,
     ProductRoutingModule,
-    [MatComponents]
+    [MatComponents],
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class ProductModule { }

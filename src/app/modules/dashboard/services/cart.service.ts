@@ -26,6 +26,7 @@ export class CartService {
     this.cartList.map((x:any)=>{
     totalPrice += x.total;
   })
+  
     return totalPrice;
 }
     
@@ -36,7 +37,7 @@ export class CartService {
 
   removeCartItem(product:any){
     this.cartList.map((a:any, index:any) => {
-      if(product.productId === a.productId){
+      if(index === a.productId){
         this.cartList.splice(index,1)
       }
     })

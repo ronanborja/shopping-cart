@@ -5,4 +5,5 @@ export interface Product {
     productCategory:string[];
     productPrice:number;
     productQuantity:number;
+    productImgUrl: string;
 }

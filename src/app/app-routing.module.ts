@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartListComponent } from './modules/dashboard/pages/cart-list/cart-list.component';
+import { ShippingFormComponent } from './modules/dashboard/pages/shipping-form/shipping-form.component';
+import { CheckoutListComponent } from './modules/dashboard/pages/checkout-list/checkout-list.component';
+import { ShippingListComponent } from './modules/dashboard/pages/shipping-list/shipping-list.component';
 
 const routes: Routes = [
   {
@@ -19,6 +22,18 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartListComponent
+  },
+  {
+    path: 'ship',
+    component: ShippingFormComponent
+  },
+  {
+    path: 'shiplist',
+    component: ShippingListComponent
+  },
+  {
+    path: 'checkout',
+    component: CheckoutListComponent
   }
 ];
 

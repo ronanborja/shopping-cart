@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CartService } from 'src/app/modules/dashboard/services/cart.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { CartService } from 'src/app/modules/dashboard/services/cart.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @Output() searchItem= new EventEmitter<any>();
   totalItem : number = 0;
   constructor(private cartService:CartService) {  }
 
@@ -15,5 +16,9 @@ export class HeaderComponent implements OnInit {
       this.totalItem = res.length;
     })
   }
+public search(event:any): void
+{
+  this.searchItem.emit(event);
+}
 
 }

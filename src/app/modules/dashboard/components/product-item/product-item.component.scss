@@ -11,8 +11,16 @@ body {
     --btn-txt-color: rgb(46, 43, 43);
     --btn-bg-color: rgb(20, 211, 195);
   }
-  .row {
-    border-top: 2px solid grey;
-    box-shadow: 0 2px grey, inset 2px 0 gray, inset -2px 0 grey;
-    overflow: hidden;
-  }
+
+
+
+img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 15px;
+  
+
+}
+h3{
+  font-weight: bolder;
+}

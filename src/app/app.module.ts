@@ -9,6 +9,7 @@ import { MatFormField } from '@angular/material/form-field';
 import { MatOption } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { SharedModule } from './shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 const MaterialComponents = [
   MatSelectModule,
@@ -18,6 +19,7 @@ const MaterialComponents = [
 @NgModule({
   declarations: [
     AppComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,9 @@ const MaterialComponents = [
     SharedModule,
     [MaterialComponents],
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule
   
   ],
   providers: [],

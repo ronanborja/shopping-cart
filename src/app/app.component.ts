@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
+
 export class AppComponent {
   title = 'shopping-cart';
+  search: String = '';
   
-  toggleDarkTheme(): void {
-    document.body.classList.toggle('dark-theme');
-  }
+
+public doSearch(event:any):void{
+  this.search = String(event.target.value);
+}
+
 }
 
