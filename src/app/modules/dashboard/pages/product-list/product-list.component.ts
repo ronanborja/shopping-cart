@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
+import { Options,LabelType } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'app-product-list',
@@ -18,7 +19,24 @@ export class ProductListComponent implements OnInit {
     private cartService: CartService
   ) {}
 
-  
+  options: Options = {
+    floor: 0,
+    ceil: 10000000,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return "<b>Min price:</b> P" + value;
+        case LabelType.High:
+          return "<b>Max price:</b> P" + value;
+        default:
+          return "P" + value;
+      }
+    }
+  };
+  minValue: number = 20;
+  maxValue: number = 80;
+
+
 
 filterCategory:string="";
 filterPrice:number=0;

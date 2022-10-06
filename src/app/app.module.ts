@@ -32,7 +32,7 @@ const MaterialComponents = [
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-  
+    NgxSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -29,5 +29,6 @@ export class CheckoutListComponent implements OnInit {
 }
 
 
+
 }
 

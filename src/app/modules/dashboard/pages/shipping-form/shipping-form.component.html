@@ -1,0 +1,56 @@
+<div class="container pt-28">
+        <h4 class="mb-3">Shipping Information</h4>
+        <form [formGroup]="userInfo" >
+          <div class="row g-3">
+            <div class="col-sm-6">
+                <label for="firstName">First Name: </label> <br/>
+                <input formControlName="firstName" type="text" id="firstName" placeholder="Enter first name..." class="form-control" required>
+                <!-- <div class="alert" *ngIf="email?.errors?.['email']" class="alert alert-danger">Invalid email!</div> -->
+            </div>
+
+            <div class="col-sm-6">
+                <label for="lastName">Last Name: </label> <br/>
+                <input formControlName="lastName" type="text" id="lastName" placeholder="Enter last name..." class="form-control" required>
+                <!-- <div class="alert" *ngIf="email?.errors?.['email']" class="alert alert-danger">Invalid email!</div> -->
+            </div>
+
+            <div class="col-sm-6">
+                <label for="phoneNo">Mobile No: </label> <br/>
+                <input formControlName="phoneNo" type="text" id="phoneNo" placeholder="Enter mobile number..." class="form-control" required>
+                <!-- <div class="alert" *ngIf="email?.errors?.['email']" class="alert alert-danger">Invalid email!</div> -->
+            </div>
+        </div>
+  
+    <h4 class="mb-3">Address Details</h4>
+      
+        <div class="row g-3">
+          <div class="col-sm-6">
+              <input formControlName="country" type="text" id="country" placeholder="Country" class="form-control" required><br>
+              <!-- <div class="alert" *ngIf="email?.errors?.['email']" class="alert alert-danger">Invalid email!</div> -->
+          </div>
+
+          <div class="col-sm-6">
+              <input formControlName="province" type="text" id="province" placeholder="Province" class="form-control" required><br>
+              <!-- <div class="alert" *ngIf="email?.errors?.['email']" class="alert alert-danger">Invalid email!</div> -->
+          </div>
+
+          <div class="col-sm-6">
+              <input formControlName="city" type="text" id="city" placeholder="City" class="form-control" required> <br>
+              <!-- <div class="alert" *ngIf="email?.errors?.['email']" class="alert alert-danger">Invalid email!</div> -->
+          </div>
+
+          <div class="col-sm-6">
+            <input formControlName="barangay" type="text" id="barangay" placeholder="Barangay" class="form-control" required><br>
+            <!-- <div class="alert" *ngIf="email?.errors?.['email']" class="alert alert-danger">Invalid email!</div> -->
+        </div>
+
+        <div class="col-sm-6">
+            <input formControlName="street" type="text" id="street" placeholder="Street, Building, House No" class="form-control" required>
+            <br>
+            <!-- <div class="alert" *ngIf="email?.errors?.['email']" class="alert alert-danger">Invalid email!</div> -->
+        </div>
+      </div>
+  </form>
+  <button routerLink="/shiplist" class="btn btn-primary" type="submit" (click)="saveInfo()">Save</button>
+</div>
+
