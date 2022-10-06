@@ -1,8 +1,17 @@
+<div class="pt-28">
 <h1> Checkout</h1> 
+     <div class="p-3 m-auto w-11/12 border border-2">
+          <h2 class="card-title"> <button routerLink="/shiplist" class="fa fa-angle-right fa-2x"></button><app-ship-details></app-ship-details> </h2>
+         
+     </div>
+<h2> Contact Details</h2>
+
+
+
 <h2> Product Details</h2>
      <div *ngFor="let prod of products">
     {{prod.productName}}
      <strong>{{prod.productPrice}}</strong>
      </div>
-                    
+</div>                  
          

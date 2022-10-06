@@ -1,7 +1,13 @@
-
-    
-        <img src="{{product?.productImgUrl}}" alt="">
-        <h3 style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;max-width: 100ch;">{{product?.productName}}</h3>
-        <p style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 100ch;">{{product?.productDescription}}</p>
-        <p><strong>{{product?.productPrice | currency: 'PHP'}}</strong></p>
+        <div class="grid place-items-center">
+                <img src="{{product?.productImgUrl}}" alt="">
+        </div>
+        <div class="grid place-items-center font-sans text-slate-600 ">
+                <h3 style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;max-width: 100ch;">{{product?.productName}}</h3>
+        </div>
+        <!-- s<p style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 100ch;">{{product?.productDescription}}</p> -->
+        
+        <div class="font-medium text-xl">
+                <p><strong>{{product?.productPrice | currency: 'PHP'}}</strong></p>
+        </div>
+        
             

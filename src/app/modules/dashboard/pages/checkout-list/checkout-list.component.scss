@@ -1,3 +1,19 @@
-table, tr, td, th{
-    width: 50vw;
+.card{
+    padding: 10px;
+    margin: 10px;
+    width: 100vw;
+    border: 2px inset coral;
+    margin: auto;
+    // ms camille lagay mo na lang yan sa div class p-10 m-10 w-100 border border-2 
+    // sa html sir?
+}
+.card-title{
+    color: cornflowerblue;
+    font-style: italic;
+    font-weight: bolder;
+    text-align: center;
+}
+button{
+    float: right;
+   
 }

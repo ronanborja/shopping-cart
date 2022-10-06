@@ -10,6 +10,7 @@ export class CartListComponent implements OnInit {
 
   products:any =[];
   total!:number;
+
   constructor(private cartService:CartService) { }
 
   ngOnInit(): void {
@@ -22,7 +23,4 @@ export class CartListComponent implements OnInit {
   removeItem(prod:any){
     this.cartService.removeCartItem(prod);
   }
-
-  
-
 }

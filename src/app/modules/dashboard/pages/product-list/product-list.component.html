@@ -1,16 +1,24 @@
-<div class="flex justify-between p-4">
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<div class="flex justify-between px-4 pt-28 pb-12">
   <div>
-    <mat-slide-toggle (click)="toggleDarkTheme()"
-      >Toggle dark theme</mat-slide-toggle
-    >
+    <mat-slide-toggle (click)="toggleDarkTheme()">Toggle dark theme</mat-slide-toggle>
   </div>
 
-  <div class="border border-2">
+  
+
+  <div class="border border-2 ">
     <select
       id="selectedPrice"
       class="form-control-mb-12"
-      (change)="priceFilterChange($event)"
-    >
+      (change)="priceFilterChange($event)">
       <option disabled>By Price</option>
       <option value="0">All</option>
       <option value="1">P1 - P100</option>
@@ -19,37 +27,25 @@
       <option value="4">P1000+ up</option>
     </select>
 
-    <select class="form-control-mb-12" (change)="orderByPriceChange($event)">
-      <option disabled>By Price</option>
-      <option value="0">Default</option>
-      <option value="1">Lowest to Highest</option>
-      <option value="2">Highest to Lowest</option>
-    </select>
-
-    <select class="form-control-mb-12" (change)="orderByNameChange($event)">
-      <option disabled>By Name</option>
-      <option value="0">Default</option>
-      <option value="1">Ascending</option>
-      <option value="2">Descending</option>
-    </select>
-
     <select class="form-control-mb-12" (change)="categoryFilterChange($event)">
-      <option disable>By Category</option>
-      <option value="">All</option>
-      <option *ngFor="let category of categories">
+      <option disabled>By Category</option>
+      <option value>All</option>
+      <option *ngFor="let category of categories" [value]="category">
         {{ category }}
       </option>
     </select>
   </div>
 </div>
-
-<div class="container">
-  <div class="row">
-    <ng-container *ngFor="let prod of products">
-      <div class="card col-md-3">
-        <br /><app-product-item [product]="prod"></app-product-item>
-        <button (click)="addToCart(prod)">Add to Cart</button><br />
+<div class="grid place-items-center pl-24">
+    <div class="container">
+        <div class="row">
+          <ng-container *ngFor="let prod of products">
+            <div class="card col-md-3">
+              <br /><app-product-item [product]="prod"></app-product-item>
+              <button (click)="addToCart(prod)"><i style="font-size: 25px" class="fa fa-cart-plus px-2"></i>Add to Cart!</button><br />
+            </div>
+          </ng-container>
+        </div>
       </div>
-    </ng-container>
-  </div>
 </div>
+

@@ -18,47 +18,50 @@ export class ProductListComponent implements OnInit {
     private cartService: CartService
   ) {}
 
+  
+
 filterCategory:string="";
 filterPrice:number=0;
-filterOrderPrice:number=0;
 filterOrderName:number=0;
-
+prevSort:string="";
+sortValue:string="";
+inverse:boolean=false;
   ngOnInit(): void {
     this.productService.getProducts().subscribe((res) => {
       this.products = res;
       this.categories = res.map( (a:any) => String(a.productCategory));
       this.categories = this.categories.filter((value,index)=>this.categories.indexOf(value)===index);
       res.forEach((a: any) => {
-        Object.assign(a, { quantity: 1, total: Number(a.productPrice)  });
+        Object.assign(a, { quantity: 1, total: Number(a.productPrice)});
       });
     });
     }
   
-    
+  doSort(event:any)
+  {
+    console.log(event.target.value);
+
+    this.prevSort = this.sortValue;
+    this.sortValue =event.target.value;
+    if(this.prevSort === this.sortValue)
+    {
+      !this.inverse;
+    }
+  }
 
   categoryFilterChange(event:any)
   {
     this.filterCategory = event.target.value;
-    this.filter(this.filterCategory,this.filterPrice,this.filterOrderPrice,this.filterOrderName);
+    this.filter(this.filterCategory,this.filterPrice,this.filterOrderName);
   }
   priceFilterChange(event:any) {
     this.filterPrice = event.target.value;
-    this.filter(this.filterCategory,this.filterPrice,this.filterOrderPrice,this.filterOrderName);
+    this.filter(this.filterCategory,this.filterPrice,this.filterOrderName);
   }
-  orderByPriceChange(event:any)
+  
+  filter(category:string,orderByPrice:number,orderByName:number)
   {
-    this.filterOrderPrice = event.target.value;
-    this.filter(this.filterCategory,this.filterPrice,this.filterOrderPrice,this.filterOrderName);
-  }
-  orderByNameChange(event:any)
-  {
-    this.filterOrderName = event.target.value;
-    this.filter(this.filterCategory,this.filterPrice,this.filterOrderPrice,this.filterOrderName);
-  }
-
-  filter(category:string,price:number,orderByPrice:number,orderByName:number)
-  {
-     return this.productService.getProductsFilter(orderByPrice,orderByName,price,category).subscribe((res) => {
+     return this.productService.getProductsFilter(orderByPrice,orderByName,category).subscribe((res) => {
        this.products = res;
      });
  
@@ -71,4 +74,10 @@ filterOrderName:number=0;
   toggleDarkTheme(): void {
     document.body.classList.toggle('dark-theme');
   }
+
+
+
+  
 }
+
+

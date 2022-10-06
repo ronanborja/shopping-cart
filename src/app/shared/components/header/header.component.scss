@@ -1,28 +1,28 @@
-
-
-
-.form-control{
-    border-radius: 3px;
-    width: 600px;
-    margin-left: 20px;
-    margin-top: 10px;
+.form-control {
+  border-radius: 3px;
+  width: 600px;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 .navbar-custom {
-    //background-color: rgb(10, 231, 251);
-    //background-color: #020c30;
-    background-color: #edc2df ;
+  //background-color: rgb(10, 231, 251);
+  //background-color: #020c30;
+  background-color: #f7e7f1;
+  position: fixed;
+//   top: 0;
+  width: 100%;
+//   margin-bottom: 50px;
 }
 
-.search-icon{
-    position: absolute;
-    z-index: 10;
-    right: 36%;
-    top: 28%;
-    color: #fcb45b;
+.search-icon {
+  position: absolute;
+  z-index: 10;
+  right: 36%;
+  top: 28%;
+  color: #fcb45b;
 }
 
-img
-{
-    width: 120px;
-    margin: 0px;
+img {
+  width: 120px;
+  margin: 0px;
 }

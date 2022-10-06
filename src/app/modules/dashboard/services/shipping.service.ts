@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Shipping } from '../models/shipping';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShippingService {
+  shipList:any;
   
   constructor(private http:HttpClient) { }
   env ="http://localhost:3000/shipping"
@@ -26,4 +27,9 @@ export class ShippingService {
     })
   );
 }
+selectData(ship:any){
+  this.shipList.remove(ship);
+  this.shipList.push(ship);
+}
+
 }

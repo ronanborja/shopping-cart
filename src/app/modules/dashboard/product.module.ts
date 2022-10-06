@@ -17,7 +17,8 @@ import { ShippingItemComponent } from './components/shipping-item/shipping-item.
 import { ShippingListComponent } from './pages/shipping-list/shipping-list.component';
 import { RouterModule } from '@angular/router';
 import { ShippingFormComponent } from './pages/shipping-form/shipping-form.component';
-
+import { MatTabGroup } from '@angular/material/tabs';
+import { ShipDetailsComponent } from './components/ship-details/ship-details.component';
 const MatComponents = [
   MatSelectModule,
   MatFormFieldModule,
@@ -36,7 +37,8 @@ const MatComponents = [
     CheckoutFormComponent,
     ShippingItemComponent,
     ShippingListComponent,
-    ShippingFormComponent
+    ShippingFormComponent,
+    ShipDetailsComponent
   ],
   imports: [
     CommonModule,

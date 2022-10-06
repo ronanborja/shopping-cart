@@ -1,12 +1,13 @@
-<ng-container >
-    <div class="container grid place-items-center">
-        <div class="card-table bg-slate-100 drop-shadow-md">
+<ng-container *ngIf="products.length != 0" >
+    <div class="container">
+    <div class="pt-28">
+        <div class="card-table">
             <div class="cart-product">
                 <table class="table table-responsive">
-                    <thead class="bg-slate-700 text-white">
+                    <thead>
                         <tr>
-                            <th>Sr.No</th>
                             <th>Product Name</th>
+                            <th></th>
                             <th>Description</th>
                             <th>Price</th>
                             <th>Quantity</th>
@@ -14,10 +15,10 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody class="">
+                    <tbody >
                         <tr *ngFor="let prod of products">
-                            <td>{{prod.productId}}</td>
-                            <td>{{prod.productName}}</td>
+                            <td><strong>{{prod.productName}}</strong></td>
+                            <td><img style="width: 100vw;" src="{{prod.productImgUrl}}"></td>
                             <td>{{prod.productDescription}}</td>
                             <td><strong>{{prod.productPrice}}</strong></td>
                             <td>
@@ -46,4 +47,21 @@
             </div>
         </div>
     </div>
+</div>
 </ng-container>
+
+<ng-container *ngIf="products.length === 0">
+<div class="container">
+    <div class="pt-28">
+    <div class="card">
+        <h3> Shopping Cart </h3>
+    </div>
+    <div class="center">
+        <img src="https://cdni.iconscout.com/illustration/free/thumb/empty-cart-4085814-3385483.png">
+        <h4> Oh no! My cart is empty!</h4>
+        <button routerLink="/dashboard" class="btn btn-primary"> Shop Now </button>
+    </div>
+</div>
+</div>
+</ng-container>
+

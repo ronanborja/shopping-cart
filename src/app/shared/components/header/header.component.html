@@ -1,28 +1,59 @@
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 
- <link rel="stylesheet" href=
- "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- 
- <header>
-    <nav class="navbar navbar-custom">
-        <div class="navbar-brand.align-item-center d-flex">
-            <a class="navbar-brand" href="#">
-                <img src="https://i.ibb.co/VDpBTxn/Shoppink-1-removebg-preview.png"
-                     class="d-inline-block align-top" alt=""></a>
-        
-        <div class="form-group pt-2">
-            <input type="text" class="form-control" placeholder="Search products"  #searchItem>
-            <i class="fa fa-search search-icon" style="font-size:36px; color: orange;" (clicked)="search(searchItem.value)"></i>
-        </div>
+<header>
+  <nav class="navbar navbar-custom z-10">
+    <div class="navbar-brand.align-item-center d-flex">
+      <a class="navbar-brand" href="#">
+        <img
+          src="https://i.ibb.co/VDpBTxn/Shoppink-1-removebg-preview.png"
+          class="d-inline-block align-top"
+          alt=""
+      /></a>
 
-        
-        
-        </div>
-        <button routerLink="cart" class="btn hover:bg-pink-100">
-            <i style="font-size: 40px;" class="fa fa-cart-plus text-orange-500"></i>
-            <div style="font-size: 10px;" class="badge bg-white text-orange-500">{{totalItem}}</div>
-        </button>
+      <div class="form-group pt-2 border rounded-xl">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="nescafe 3-in-1 classic, ebooks, laptop"
+          #searchItem
+        />
+        <i
+          class="fa fa-search search-icon"
+          style="font-size: 36px; color: orange"
+          (clicked)="search(searchItem.value)"
+        ></i>
+      </div>
+    </div>
 
-        
-    </nav>
+    <button routerLink="cart"  class="btn hover:bg-pink-100">
+      <i style="font-size: 40px" class="fa fa-cart-plus text-orange-500"></i>
+      <div style="font-size: 10px" class="badge bg-white text-orange-500">
+        {{ totalItem }}
+      </div>
+    </button>
+    <a href="profile"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        color="orange"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-8 h-8 hover:text-orange-700"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+        />
+      </svg>
+    </a>
+  </nav>
 </header>

@@ -2,3 +2,38 @@
     // background-color: rgb(241, 16, 185);
     background-color: #fcb45b;
 }
+.card-table{
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   min-width: none;
+   word-wrap: break-word;
+   background-color: whitesmoke;
+   background-clip: border-box;
+   border: 1px solid black;
+   border-radius: 1px;
+}
+.card{
+    height: 70vh;
+    margin: 25px;
+    padding: 25px;
+}
+.center img{
+    text-decoration: none;
+    color: inherit;
+    border: none;
+    outline: none;
+    height: 200px;
+    width: 200px;
+    margin: 20px 0px;
+}
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+h4{
+    font-weight: bolder;
+}

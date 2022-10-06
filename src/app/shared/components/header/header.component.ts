@@ -8,7 +8,7 @@ import { CartService } from 'src/app/modules/dashboard/services/cart.service';
 })
 export class HeaderComponent implements OnInit {
   @Output() searchItem= new EventEmitter<any>();
-  totalItem : number = 0;
+  totalItem :number = 0;
   constructor(private cartService:CartService) {  }
 
   ngOnInit(): void {
@@ -20,5 +20,7 @@ public search(event:any): void
 {
   this.searchItem.emit(event);
 }
+
+
 
 }

@@ -5,15 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'
-import { MatFormField } from '@angular/material/form-field';
-import { MatOption } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
+import {MatTabsModule} from '@angular/material/tabs';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 const MaterialComponents = [
   MatSelectModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatTabsModule
 ]
 
 @NgModule({
@@ -30,7 +31,7 @@ const MaterialComponents = [
     FormsModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
   
   ],
   providers: [],
