@@ -19,10 +19,8 @@ export class ProductService {
     );
  }
  
-getProductsFilter(orderByName:number,priceRange:number,category:string):Observable<Product[]>
+getProductsFilter(orderByName:number,priceRange:number,category:string,min:number,max:number):Observable<Product[]>
 {
-  let min = [1,1,101,501,1001];
-  let max = [Number.MAX_SAFE_INTEGER,100,500,1000,Number.MAX_SAFE_INTEGER];
   let products: Observable<Product[]>;
   products = this.getProducts();
   
@@ -44,7 +42,7 @@ getProductsFilter(orderByName:number,priceRange:number,category:string):Observab
  
 
   products = products.pipe(map((products: Product[]) => {
-    return products.filter(product => product.productPrice >= min[priceRange] && product.productPrice <=max[priceRange]) }));
+    return products.filter(product => product.productPrice >= min && product.productPrice <=max) }));
 
   if(category==='')
     return products;

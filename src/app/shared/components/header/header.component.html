@@ -8,52 +8,111 @@
 />
 
 <header>
-  <nav class="navbar navbar-custom z-10">
-    <div class="navbar-brand.align-item-center d-flex">
+  <nav class="navbar navbar-custom fixed bg-pink-100 z-10">
+    <div class="navbar-brand.align-item-center flex">
       <a class="navbar-brand" href="#">
         <img
           src="https://i.ibb.co/CtKzT46/Shoppink-4-removebg-preview.png"
-          class="d-inline-block align-top"
+          class="d-inline-block align-top w-32"
           alt=""
       /></a>
 
-      <div class="form-group pt-2 border rounded-xl">
-        <input
+      <div class="py-4">
+          <input
           type="text"
-          class="form-control"
-          placeholder="nescafe 3-in-1 classic, ebooks, laptop"
+          class=" border-orange-400 border-2 rounded-2xl px-2"
+          placeholder="nescafe 3-in-1"
           #searchItem
         />
+        <!--   style="font-size: 24px; color: orange" -->
         <i
-          class="fa fa-search search-icon"
-          style="font-size: 36px; color: orange"
+          class="fa fa-lg fa-search text-orange-400"
           (clicked)="search(searchItem.value)"
         ></i>
       </div>
     </div>
+    <div fxShow="true" fxHide.lt-md="true" class="flex ">
 
-    <button routerLink="cart"  class="btn hover:bg-pink-100">
-      <i style="font-size: 40px" class="fa fa-cart-plus text-orange-500"></i>
-      <div style="font-size: 10px" class="badge bg-white text-orange-500">
-        {{ totalItem }}
+      
+     
+  
+      <div class="py-2.5">
+        <mat-slide-toggle (click)="toggleDarkTheme()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 fill-orange-400">
+          <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd" />
+        </svg>
+        </mat-slide-toggle>
+      </div>  
+  
+      <div>
+        <button routerLink="cart" class="btn">
+          <i class="fa fa-2x fa-shopping-cart text-orange-400 hover:text-orange-600"></i>
+          <div class="badge bg-white text-orange-400">
+            {{ totalItem }}
+          </div>
+        </button>
       </div>
-    </button>
-    <a href="profile"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        color="orange"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-8 h-8 hover:text-orange-700"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
-        />
-      </svg>
-    </a>
+      <div>
+        <button routerLink="profile" class="btn">
+          <i class="fa fa-2x fa-solid fa-user text-orange-400 hover:text-orange-600"></i>
+        </button>
+      </div>
+  
+
+    </div>
+   
+   
+
   </nav>
-</header>
+</header> 
+
+<!-- <div style="height: 100vh;">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Responsive Navigation</span>
+      <span class="example-spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+        <a href="#" mat-button>
+          <mat-icon>notifications</mat-icon>
+          Notifications
+        </a>
+        <a href="#" mat-button>
+          <mat-icon>message</mat-icon>
+          Messages
+        </a>
+        <a href="#" mat-button>
+          <mat-icon>account_box</mat-icon>
+          My Account
+        </a>
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div> -->
+  <!-- <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav position="end">
+      <mat-nav-list>
+        <a href="#" mat-list-item>
+          <mat-icon>notifications</mat-icon>
+          Notifications
+        </a>
+        <a href="#" mat-list-item>
+          <mat-icon>message</mat-icon>
+          Messages</a>
+        <a href="#" mat-list-item>
+          <mat-icon>account_box</mat-icon>
+          My Account
+        </a>
+        <a href="#" mat-list-item>
+          <mat-icon>lock</mat-icon>
+          My Account
+        </a>
+        <a (click)="sidenav.toggle()" mat-list-item>
+          <mat-icon>close</mat-icon> Close
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>Main content</mat-sidenav-content>
+  </mat-sidenav-container> 
+</div>-->

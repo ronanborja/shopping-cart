@@ -19,7 +19,7 @@ import { RouterModule } from '@angular/router';
 import { ShippingFormComponent } from './pages/shipping-form/shipping-form.component';
 import { MatTabGroup } from '@angular/material/tabs';
 import { ShipDetailsComponent } from './components/ship-details/ship-details.component';
-
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 const MatComponents = [
   MatSelectModule,
@@ -48,7 +48,8 @@ const MatComponents = [
     [MatComponents],
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    NgxSliderModule
   ]
 })
 export class ProductModule { }

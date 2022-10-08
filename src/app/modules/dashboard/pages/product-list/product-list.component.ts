@@ -10,39 +10,56 @@ import { Options,LabelType } from '@angular-slider/ngx-slider';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-  @Input() searchItem:String="";
-  
+  @Input() searchItem:String="";  
   products: Product[] = [];
   categories:string[]=[];
-  constructor(
-    private productService: ProductService,
-    private cartService: CartService
-  ) {}
+  minValue: number = 0;
+  maxValue: number = 1000000;
+  public show:boolean = false;
+  public buttonName:any = 'Show';
+  filterCategory:string="";
+  filterPrice:number=0;
+  filterOrderName:number=0;
+  prevSort:string="";
+  sortValue:string="";
+  
+  
+  constructor(private productService: ProductService,private cartService: CartService) {}
 
   options: Options = {
-    floor: 0,
-    ceil: 10000000,
+    floor: 1,
+    ceil: 1000000,
+    showTicks:true,
+    stepsArray: [
+      { value: 1},
+      { value: 100},
+      { value: 500},
+      { value: 1000},
+      { value: 10000},
+      { value: 100000},
+      { value: 1000000}  ],
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
-          return "<b>Min price:</b> P" + value;
+          return "<b>₱" + value+"</b>";
         case LabelType.High:
-          return "<b>Max price:</b> P" + value;
+          return "<b>₱" + value+"</b>";
         default:
-          return "P" + value;
+          return "";
       }
     }
   };
-  minValue: number = 20;
-  maxValue: number = 80;
+
+
+  toggle() {
+    this.show = !this.show;
+    if(this.show) this.buttonName = "Hide";
+    else  this.buttonName = "Show";
+  }
 
 
 
-filterCategory:string="";
-filterPrice:number=0;
-filterOrderName:number=0;
-prevSort:string="";
-sortValue:string="";
+
 inverse:boolean=false;
   ngOnInit(): void {
     this.productService.getProducts().subscribe((res) => {
@@ -58,28 +75,22 @@ inverse:boolean=false;
   doSort(event:any)
   {
     console.log(event.target.value);
-
-    this.prevSort = this.sortValue;
-    this.sortValue =event.target.value;
-    if(this.prevSort === this.sortValue)
-    {
-      !this.inverse;
-    }
   }
 
-  categoryFilterChange(event:any)
+  categoryFilterChange(event:string)
   {
-    this.filterCategory = event.target.value;
-    this.filter(this.filterCategory,this.filterPrice,this.filterOrderName);
+    this.filterCategory=event;
+    console.log(this.filterCategory);
+    this.filter(this.filterCategory,this.filterPrice,this.filterOrderName,this.minValue,this.maxValue);
   }
   priceFilterChange(event:any) {
     this.filterPrice = event.target.value;
-    this.filter(this.filterCategory,this.filterPrice,this.filterOrderName);
+    this.filter(this.filterCategory,this.filterPrice,this.filterOrderName,this.minValue,this.maxValue);
   }
   
-  filter(category:string,orderByPrice:number,orderByName:number)
+  filter(category:string,orderByPrice:number,orderByName:number,min:number,max:number)
   {
-     return this.productService.getProductsFilter(orderByPrice,orderByName,category).subscribe((res) => {
+     return this.productService.getProductsFilter(orderByPrice,orderByName,category,this.minValue,this.maxValue).subscribe((res) => {
        this.products = res;
      });
  
@@ -88,12 +99,6 @@ inverse:boolean=false;
   addToCart(prod: any) {
     this.cartService.addtoCart(prod);
   }
-
-  toggleDarkTheme(): void {
-    document.body.classList.toggle('dark-theme');
-  }
-
-
 
   
 }

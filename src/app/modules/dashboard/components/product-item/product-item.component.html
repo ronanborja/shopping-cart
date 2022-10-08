@@ -1,12 +1,12 @@
-        <div class="grid place-items-center">
+        <div class="grid place-items-center" >
                 <img src="{{product?.productImgUrl}}" alt="">
         </div>
-        <div class="grid place-items-center font-sans text-slate-600 ">
+        <div class="overflow-hidden whitespace-nowrap text-ellipsis grid place-items-center font-sans text-slate-600 ">
                 <h3 style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;max-width: 100ch;">{{product?.productName}}</h3>
         </div>
         <!-- s<p style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis; max-width: 100ch;">{{product?.productDescription}}</p> -->
         
-        <div class="font-medium text-xl">
+        <div class="font-medium text-xl text-orange-400">
                 <p><strong>{{product?.productPrice | currency: 'PHP'}}</strong></p>
         </div>
         
