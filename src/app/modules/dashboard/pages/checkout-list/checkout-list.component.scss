@@ -8,12 +8,40 @@
     // sa html sir?
 }
 .card-title{
-    color: cornflowerblue;
-    font-style: italic;
+    color: rgb(16, 17, 17);
     font-weight: bolder;
     text-align: center;
 }
+
+.btn{
+    margin-left: 82%;
+    width: 15vw;
+    height: 45px;
+    font-size: larger;
+    font-weight: bolder;
+}
+table{
+    text-align: right;
+    width: 90%;
+}
+th{
+    width: 20%;
+}
+.card-total{
+    text-align: right;
+}
 button{
-    float: right;
-   
+     width: 100%;
+     
+}
+input[type=text] {
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid rgb(75, 73, 73);
+}
+label{
+    font-weight: bold;
+}
+p{
+    color: darkcyan;
 }

@@ -1,0 +1,27 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+<div class="pt-28">
+    <div class="container">
+    <form [formGroup]="addProducts">
+        <h1 class="pt-7">ADD USER</h1>
+        <div class="icon">
+          <i class="fas fa-user-circle fa-sm"></i>
+        </div>
+        <div class="formcontainer">
+        <div class="container">
+            <label class="col-md-4 control-label" for="productName">Product Name</label>  
+            <input formControlName="productName" type="text" id="productName" placeholder="PRODUCT NAME" class="form-control" required>
+            <label class="col-md-4 control-label" for="productCategory">PRODUCT CATEGORY</label>
+            <input formControlName="productCategory" id="productCategory" type="text" placeholder="PRODUCT CATEGORY" class="form-control" required="" type="text">
+            <label class="col-md-4 control-label" for="productPrice">PRODUCT PRICE</label>  
+            <input formControlName="productPrice" type="text" id="productPrice"  placeholder="PRODUCT PRICE" class="form-control input-md" required="" type="text">
+            <label class="col-md-4 control-label" for="productImgUrl">Image Link: </label>
+            <input formControlName="productImgUrl" type="text" id="productImgUrl" placeholder="IMAGE LINK" class="form-control input-md" required="" type="text">
+        </div>
+        <button (click)="submit()" type="submit"><strong>Upload Product</strong></button>
+        </div>
+      </form>
+    </div>
+</div>
+

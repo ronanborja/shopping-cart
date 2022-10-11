@@ -10,7 +10,7 @@ import { Options,LabelType } from '@angular-slider/ngx-slider';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-  @Input() searchItem:String="";  
+  searchItem:string="";
   products: Product[] = [];
   categories:string[]=[];
   minValue: number = 0;
@@ -18,12 +18,12 @@ export class ProductListComponent implements OnInit {
   public show:boolean = false;
   public buttonName:any = 'Show';
   filterCategory:string="";
-  filterPrice:number=0;
-  filterOrderName:number=0;
+  filterSequence:number=0;
+  filterOrderName:string="";
   prevSort:string="";
   sortValue:string="";
   
-  
+
   constructor(private productService: ProductService,private cartService: CartService) {}
 
   options: Options = {
@@ -50,15 +50,17 @@ export class ProductListComponent implements OnInit {
     }
   };
 
+  findName(search:any): any
+  {
+    return 
+  }
+
 
   toggle() {
     this.show = !this.show;
     if(this.show) this.buttonName = "Hide";
     else  this.buttonName = "Show";
   }
-
-
-
 
 inverse:boolean=false;
   ngOnInit(): void {
@@ -70,36 +72,60 @@ inverse:boolean=false;
         Object.assign(a, { quantity: 1, total: Number(a.productPrice)});
       });
     });
+
+    this.cartService.search.subscribe(val=>
+      {
+        this.searchItem = val;
+      })
     }
   
-  doSort(event:any)
+  doSort(orderValue:string)
   {
-    console.log(event.target.value);
+    if(this.filterOrderName==orderValue)
+    { 
+      if(this.filterSequence==2)
+      this.filterSequence=0;
+      else
+      {
+        this.filterSequence++;
+      }
+    }
+    else 
+    {
+      this.filterOrderName = orderValue;
+      this.filterSequence = 0;
+    }
+    this.filter(this.filterCategory,this.filterOrderName,this.minValue,this.maxValue,this.filterSequence);
+    console.log(orderValue);
   }
 
-  categoryFilterChange(event:string)
+  categoryFilterChange(category:string)
   {
-    this.filterCategory=event;
-    console.log(this.filterCategory);
-    this.filter(this.filterCategory,this.filterPrice,this.filterOrderName,this.minValue,this.maxValue);
+    this.filterCategory=category;
+    this.filter(this.filterCategory,this.filterOrderName,this.minValue,this.maxValue,this.filterSequence);
   }
   priceFilterChange(event:any) {
-    this.filterPrice = event.target.value;
-    this.filter(this.filterCategory,this.filterPrice,this.filterOrderName,this.minValue,this.maxValue);
+    this.filter(this.filterCategory,this.filterOrderName,this.minValue,this.maxValue,this.filterSequence);
   }
   
-  filter(category:string,orderByPrice:number,orderByName:number,min:number,max:number)
+  filter(category:string,orderBy:string,min:number,max:number,filterSequence:number)
   {
-     return this.productService.getProductsFilter(orderByPrice,orderByName,category,this.minValue,this.maxValue).subscribe((res) => {
+     return this.productService.getProductsFilter(orderBy,category,min,max,filterSequence).subscribe((res) => {
        this.products = res;
      });
- 
 }
 
-  addToCart(prod: any) {
+  addToCart(prod: Product) {
     this.cartService.addtoCart(prod);
   }
 
+  isUser() {
+    const role = localStorage.getItem("userType");
+    if(role == "admin"){
+      return false;
+    }
+     return true;
+  }
   
 }
 

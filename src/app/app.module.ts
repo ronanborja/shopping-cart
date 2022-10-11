@@ -10,17 +10,21 @@ import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 const MaterialComponents = [
   MatSelectModule,
   MatSlideToggleModule,
-  MatTabsModule
+  MatTabsModule,
+  MatDialogModule
+  
+
 ]
 
 @NgModule({
   declarations: [
-    AppComponent
-    
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +36,12 @@ const MaterialComponents = [
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    NgxSliderModule
+    NgxSliderModule,
+    MatDialogModule
+   
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

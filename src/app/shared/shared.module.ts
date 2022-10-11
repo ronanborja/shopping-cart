@@ -11,7 +11,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
-
+import { FormsModule } from '@angular/forms';
+import { ProductPipe } from './pipe/filter.pipe';
 const MaterialComponents = [
   MatSlideToggleModule,
   FlexLayoutModule,
@@ -26,18 +27,18 @@ const MaterialComponents = [
   declarations: [
     HeaderComponent,
     FooterComponent,
-    CommandBarComponent
+    CommandBarComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    [MaterialComponents]
-    
+    [MaterialComponents],
+    FormsModule
   ],
   exports:[
     HeaderComponent,
     FooterComponent,
-    CommandBarComponent
+    CommandBarComponent,
   ]
 })
 export class SharedModule { }

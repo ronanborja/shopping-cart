@@ -5,16 +5,16 @@ import { RegistrationFormComponent } from './pages/registration-form/registratio
 import { EditFormComponent } from './pages/edit-form/edit-form.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ProfileRoutingModule } from './profile-routing.module';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms'
-
-
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ProfileItemComponent } from './components/profile-item/profile-item.component'
 
 @NgModule({
   declarations: [
     LoginFormComponent,
     RegistrationFormComponent,
     EditFormComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    ProfileItemComponent
   ],
   imports: [
     CommonModule,

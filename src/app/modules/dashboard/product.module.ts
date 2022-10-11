@@ -14,17 +14,19 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { CheckoutFormComponent } from './pages/checkout-form/checkout-form.component'
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ShippingItemComponent } from './components/shipping-item/shipping-item.component';
-import { ShippingListComponent } from './pages/shipping-list/shipping-list.component';
 import { RouterModule } from '@angular/router';
 import { ShippingFormComponent } from './pages/shipping-form/shipping-form.component';
 import { MatTabGroup } from '@angular/material/tabs';
 import { ShipDetailsComponent } from './components/ship-details/ship-details.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ProfilePageComponent } from '../profile/pages/profile-page/profile-page.component';
+import { ProductPipe } from 'src/app/shared/pipe/filter.pipe';
 const MatComponents = [
   MatSelectModule,
   MatFormFieldModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  
 ]
 
 @NgModule({
@@ -38,9 +40,9 @@ const MatComponents = [
     PendingListComponent,
     CheckoutFormComponent,
     ShippingItemComponent,
-    ShippingListComponent,
     ShippingFormComponent,
-    ShipDetailsComponent
+    ShipDetailsComponent,
+    ProductPipe
   ],
   imports: [
     CommonModule,
@@ -49,7 +51,8 @@ const MatComponents = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    NgxSliderModule
+    NgxSliderModule,
+    MatDialogModule
   ]
-})
+})  
 export class ProductModule { }

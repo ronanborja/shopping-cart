@@ -7,117 +7,90 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
 
+
+
 <!-- Dashboard -->
-<div class="flex py-24">
-   <!-- Sidebar for Filtering -->
-  <aside class="w-64 fixed" aria-label="Sidebar">
-     <!-- pafix na rin bro yung toggle dark theme hahaha oks oks -->
-    <div class="pt-28 overflow-y-visible py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
-       <div class="flex items-center pl-2.5 mb-4">
-          <img src="https://cdn-icons-png.flaticon.com/512/107/107799.png" class="mr-3 h-6 sm:h-7" alt="Filter" />
-          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Filter By</span>
-       </div>
-       <ul class="space-y-2">
-          <!-- <li>
-             <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
-                <span class="ml-3">Dashboard</span>
-             </a>
-          </li> -->
+  <div class="flex justify-around space-x-20 top-40 relative">
+    <aside class="w-64" aria-label="Sidebar">
+      <!-- Side Nav-->
+     <div class="pt-28 overflow-y-visible py-4 px-3 bg-pink-50 rounded dark:bg-gray-800">
+        <div class="flex items-center pl-2.5 mb-4">
+           <img src="https://cdn-icons-png.flaticon.com/512/107/107799.png" class="mr-3 h-6 sm:h-7" alt="Filter" />
+           <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Filter By</span>
+        </div>
+        <ul class="space-y-4">
+           <li>
+             <span (click)="toggle()" class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 cursor-pointer" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                   <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" >
+                     <path fill-rule="evenodd" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" clip-rule="evenodd"/></svg>
+                   <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Category</span>
+                   <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+             </span>
+             
+             <ul id="category-dropdown" class="py-2 space-y-2 cursor-pointer" *ngIf="show" >
+                <li (click)="categoryFilterChange('')"><a class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">All</a></li>
+               <li *ngFor="let category of categories" (click)="categoryFilterChange(category)">
+                 <a class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">{{ category }}</a>
+               </li>          
+             </ul>
+          </li>
           <li>
-            <span (click)="toggle()" class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                  <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" >
-                    <path fill-rule="evenodd" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" clip-rule="evenodd"/></svg>
-                  <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Category</span>
-                  <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+           </li>
+           <li>
+              <span class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+                 <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+                 <span class="flex-1 ml-3 whitespace-nowrap">Price Range</span>
+              </span>
+           </li>
+           <li>
+           <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (keydown.ArrowLeft)="priceFilterChange($event)" (keydown.ArrowRight)="priceFilterChange($event)" (click)="priceFilterChange($event)"></ngx-slider>
+         </li>
+         </ul>
+ 
+        <ul class="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
+            <a class="flex items-center pl-2.5 mb-5">
+           <img src="https://www.pngfind.com/pngs/m/495-4952598_png-file-svg-sort-by-icon-png-transparent.png" class="mr-3 h-6 sm:h-7" alt="Flowbite Logo" />
+           <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Sort By</span>
+        </a>
+     
+         <li>
+            <span class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group cursor-pointer">
+             <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
+               <span class="ml-3" (click)="doSort('Name')">Name</span>
             </span>
-            
-            <ul id="category-dropdown" class="py-2 space-y-2" *ngIf="show" >
-              <li *ngFor="let category of categories" (click)="categoryFilterChange(category)">
-                <a class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">{{ category }}</a>
-              </li>          
-            </ul>
          </li>
          <li>
-          </li>
-          <!-- <li>
-             <a href="#" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path><path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path></svg>
-                <span class="flex-1 ml-3 whitespace-nowrap">Inbox</span>
-                <span class="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">3</span>
-             </a>
-          </li> -->
-          <li>
-             <span class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
-                <span class="flex-1 ml-3 whitespace-nowrap">Price Range</span>
+           <span class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group cursor-pointer">
+             <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z" clip-rule="evenodd"></path></svg>
+             <span class="ml-3" (click)="doSort('Price')">Price</span>
              </span>
-          </li>
-          <li>
-          <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (keydown.ArrowLeft)="priceFilterChange($event)" (keydown.ArrowRight)="priceFilterChange($event)" (click)="priceFilterChange($event)"></ngx-slider>
-        </li>
-        </ul>
-
-       <ul class="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
-           <a class="flex items-center pl-2.5 mb-5">
-          <img src="https://www.pngfind.com/pngs/m/495-4952598_png-file-svg-sort-by-icon-png-transparent.png" class="mr-3 h-6 sm:h-7" alt="Flowbite Logo" />
-          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Sort By</span>
-       </a>
-    
-        <li>
-           <span class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
-            <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
-              <span class="ml-3">Name</span>
-           </span>
-        </li>
-        <li>
-          <span class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
-            <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z" clip-rule="evenodd"></path></svg>
-            <span class="ml-3">Price</span>
-            </span>
-       </li>
-      
-     </ul>
-    </div>
- </aside>
-  
-
-  
-    <!-- <select
-      id="selectedPrice"
-      class="form-control-mb-12"
-      (change)="priceFilterChange($event)">
-      <option disabled>By Price</option>
-      <option value="0">All</option>
-      <option value="1">P1 - P100</option>
-      <option value="2">P101 - P500</option>
-      <option value="3">P501 - P1000</option>
-      <option value="4">P1000+ up</option>
-    </select> -->
-
-    <!-- <select class="form-control-mb-12" (click)="categoryFilterChange($event)">
-      <option disabled>By Category</option>
-      <option value>All</option>
-      <option *ngFor="let category of categories" [value]="category">
-        {{ category }}
-      </option>
-    </select> -->
-  
-    <!-- List of Products -->
-    <div class="ml-48">
-      <div class="grid place-items-center pl-24 min-w-full">
-        <div class="container">
-            <div class="row">
-              <ng-container *ngFor="let prod of products">
-                <div class="card col-md-3">
-                  <br /><app-product-item [product]="prod"></app-product-item>
-                  <button (click)="addToCart(prod)"><i style="font-size: 24px" class="fa fa-cart-plus px-2"></i>Add to Cart!</button><br />
-                </div>
-              </ng-container>
-            </div>
+        </li>       
+      </ul>
+     </div>
+  </aside>
+<!--List of Products-->
+  <div class="min-w-max">
+    <div class="grid place-items-center min-w-full">
+      <div class="container">
+          <div class="row">
+            <ng-container *ngFor="let prod of products | filter:searchItem">
+              <div class="card col-md-3">
+                <br /><app-product-item [product]="prod"></app-product-item>
+                <button (click)="addToCart(prod)" *ngIf="isUser()"><i style="font-size: 24px" class="fa fa-cart-plus px-2"></i>Add to Cart!</button><br />
+              </div>
+            </ng-container>
           </div>
-    </div>
+        </div>
+        
+  </div>
+  <ng-container *ngIf="products.length === 0">
+    <div class="container flex items-center pl-2.5 mb-4">
+        <div class="center">
+            <img class="px-10" src="https://eonbazar.com/images/npf.jpg">
+        </div>
+      </div>
+    </ng-container>
+    
 
-    </div>
 
 </div>

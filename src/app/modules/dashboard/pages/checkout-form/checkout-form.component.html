@@ -1,0 +1,29 @@
+<div class="pt-28">
+<div class="p-3 m-auto w-11/12 border"> 
+    <h2> Order Details</h2>
+         <table class="m-auto" >
+              <thead>
+                   <tr>
+                       <th></th>
+                       <th>Product Name</th>
+                       <th>Price</th>
+                       <th>Quantity</th>
+                       <th>Subtotal</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr *ngFor="let prod of products">
+                        <td><img style="width: 10vw;" src="{{prod.productImgUrl}}"></td>
+                        <td>  {{prod.productName}} </td>
+                         <td> &#8369; {{prod.productPrice}} </td>
+                         <td> {{prod.productQuantity}}</td>
+                         <td> <strong> &#8369; {{prod.productPrice * prod.productQuantity}}</strong> </td>
+                   </tr> 
+
+                   </tbody>
+              </table>
+              <div class="p-3 m-auto w-11/12 border"> 
+                <div class="card-total">
+                     <h2> Total:  &#8369; {{total}}</h2>
+                </div>
+</div>    

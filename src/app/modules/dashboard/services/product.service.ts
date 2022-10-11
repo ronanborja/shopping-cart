@@ -18,39 +18,67 @@ export class ProductService {
       })
     );
  }
+
+ getProductById(id:any){
+  return this.http.get(`${this.env}/${id}`);
+ }
+
+ updateProduct(id:any, data:any){
+  return this.http.put(`${this.env}/${id}`, data);
+ }
+
+ deleteProduct(id:any){
+  return this.http.delete(`${this.env}/${id}`);
+ }
+
+
+ saveProducts(data : any) {
+  return this.http.post("http://localhost:3000/product",data)
+  .pipe(map((res:any) => {
+    return res;
+  }))
+
+}
  
-getProductsFilter(orderByName:number,priceRange:number,category:string,min:number,max:number):Observable<Product[]>
+getProductsFilter(orderBy:string,category:string,min:number,max:number,sequence:number):Observable<Product[]>
 {
   let products: Observable<Product[]>;
   products = this.getProducts();
   
-  // if(orderByPrice==1){
-  //   products = products.pipe(map((product: Product[]) => {
-  //     return product.sort((a, b) => Number(a.productPrice) - Number(b.productPrice))})); }
-  // else if(orderByPrice==2)
-  // {
-  //   products = products.pipe(map((product: Product[]) => {
-  //     return product.sort((a, b) => Number(b.productPrice) - Number(a.productPrice)) }));
-  // }
-
-  if(orderByName==1)
+  if(orderBy=="Price"){
+     if(sequence == 1){
+    products = products.pipe(map((product: Product[]) => {
+      return product.sort((a, b) => Number(a.productPrice) - Number(b.productPrice))})); }
+  else if(sequence==2)
+  {
+    products = products.pipe(map((product: Product[]) => {
+      return product.sort((a, b) => Number(b.productPrice) - Number(a.productPrice)) }));
+  }
+  }
+  else
+{
+  if(sequence==1)
+  {
   products = products.pipe(map((product: Product[]) => {
     return product.sort((a, b) => a.productName > b.productName ? 1 : -1) }));
-  else if(orderByName==2)
+  }else if (sequence==2)
+  {
   products = products.pipe(map((product: Product[]) => {
     return product.sort((a, b) => b.productName > a.productName ? 1 : -1) }));
- 
+  }
+}
 
   products = products.pipe(map((products: Product[]) => {
     return products.filter(product => product.productPrice >= min && product.productPrice <=max) }));
 
   if(category==='')
+  {
     return products;
+  }
   else
   {
     return products = products.pipe(map((products: Product[]) => {
       return products.filter(product => !product.productCategory.indexOf(category)) }));  
   }
 }
-
 }

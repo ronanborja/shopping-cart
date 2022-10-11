@@ -8,7 +8,7 @@
 />
 
 <header>
-  <nav class="navbar navbar-custom fixed bg-pink-100 z-10">
+  <nav class="nav fixed bg-pink-50 z-10 w-full flex justify-between h-15 drop-shadow-2xl shadow-lg shadow-indigo-500/50 px-2">
     <div class="navbar-brand.align-item-center flex">
       <a class="navbar-brand" href="#">
         <img
@@ -20,48 +20,50 @@
       <div class="py-4">
           <input
           type="text"
-          class=" border-orange-400 border-2 rounded-2xl px-2"
+          name="searchInput"
+          class="px-2 rounded-lg border-2 border-slate-600 mt-1 "
           placeholder="nescafe 3-in-1"
-          #searchItem
+          [(ngModel)]="searchInput"
         />
         <!--   style="font-size: 24px; color: orange" -->
         <i
-          class="fa fa-lg fa-search text-orange-400"
-          (clicked)="search(searchItem.value)"
+          class="fa fa-lg fa-search text-slate-600 -ml-6" (click)="search(searchInput)" 
+          
         ></i>
       </div>
     </div>
-    <div fxShow="true" fxHide.lt-md="true" class="flex ">
+    <div fxShow="true" fxHide.lt-md="true" class="flex align-items-center">
 
-      
-     
-  
-      <div class="py-2.5">
-        <mat-slide-toggle (click)="toggleDarkTheme()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 fill-orange-400">
+      <div>
+        <mat-slide-toggle (click)="toggleDarkTheme()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 bg">
           <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd" />
         </svg>
         </mat-slide-toggle>
       </div>  
   
       <div>
-        <button routerLink="cart" class="btn">
-          <i class="fa fa-2x fa-shopping-cart text-orange-400 hover:text-orange-600"></i>
-          <div class="badge bg-white text-orange-400">
+        <button routerLink="cart" class="btn hover:bg-white" *ngIf="isUser()">
+          <i class="fa fa-lg fa-shopping-cart text-slate-600 hover:text-slate-700"></i>
+          <div class="badge rounded-circle bg-danger text-white">
             {{ totalItem }}
           </div>
         </button>
       </div>
       <div>
-        <button routerLink="profile" class="btn">
-          <i class="fa fa-2x fa-solid fa-user text-orange-400 hover:text-orange-600"></i>
+        <button routerLink="profile" class="btn hover:bg-white" *ngIf="isUser()">
+          <i class="fa fa-lg fa-solid fa-user text-slate-600 hover:text-slate-700"></i>
         </button>
+
+          <button routerLink="users" class="btn" *ngIf="!isUser()">
+            List of Users
+          </button>
+
+        <button routerLink="dashboard" class="btn" *ngIf="!isLoggedin()"  (click)="logout()">
+          Logout
+        </button>
+
       </div>
-  
-
     </div>
-   
-   
-
   </nav>
 </header> 
 

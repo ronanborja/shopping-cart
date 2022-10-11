@@ -1,0 +1,26 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+<div class="pt-28">
+    <div class="container">
+    <form [formGroup]="addUsers">
+        <h1 class="pt-7">ADD USER</h1>
+        <div class="icon">
+          <i class="fas fa-user-circle fa-sm"></i>
+        </div>
+        <div class="formcontainer">
+        <div class="container">
+            <label for="firstName">Full Name: </label> <br/>
+            <input formControlName="fullName" type="text" id="fullName" placeholder="Enter first name..." class="form-control" required>
+            <label for="lastName">Email: </label> <br/>
+            <input formControlName="email" type="text" id="email" placeholder="Enter email..." class="form-control" required>
+            <label for="password">Password: </label> <br/>
+            <input formControlName="password" type="text" id="password" placeholder="Enter password..." class="form-control" required>
+            <label for="phoneNo">Mobile No: </label> <br/>
+          <input formControlName="mobile" type="text" id="mobile" placeholder="Enter mobile number..." class="form-control" required>
+        </div>
+        <button (click)="submit()" type="submit"><strong>Create Account</strong></button>
+        </div>
+      </form>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Shipping } from '../../models/shipping';
 import { Validator } from '@angular/forms';
@@ -9,6 +9,7 @@ import { ShippingService } from '../../services/shipping.service';
   styleUrls: ['./shipping-form.component.scss']
 })
 export class ShippingFormComponent implements OnInit {
+
   
 userInfo = new FormGroup({
   firstName : new FormControl(''),
@@ -21,6 +22,8 @@ userInfo = new FormGroup({
   barangay:new FormControl(''),
   street:new FormControl(''),
 })
+displayData = [];
+
   constructor(private fb: FormBuilder,
     private shippingService:ShippingService ) { }
   
@@ -30,12 +33,6 @@ userInfo = new FormGroup({
   }
 
   saveInfo(){
-    this.shippingService.saveDetails(this.userInfo.value).subscribe(res =>{
-      console.log(res);
-    });
-      alert("Info succesfuly added!");
-      // console.log(this.userInfo.get('name')?.errors);
       console.log(this.userInfo.value);
-      window.location.href = "/shiplist";
   }
 }

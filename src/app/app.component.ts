@@ -9,12 +9,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 
 export class AppComponent {
   title = 'shopping-cart';
-  search: String = '';
+  searchItem: String = '';
   
 
 public doSearch(event:any):void{
-  this.search = String(event.target.value);
+  this.searchItem = String(event.target.value);
 }
-
 }
 

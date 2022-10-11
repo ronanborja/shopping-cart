@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ShipDetailsService } from '../../services/ship-details.service';
+import { Shipping } from '../../models/shipping';
 
 @Component({
   selector: 'app-ship-details',
@@ -7,16 +8,11 @@ import { ShipDetailsService } from '../../services/ship-details.service';
   styleUrls: ['./ship-details.component.scss']
 })
 export class ShipDetailsComponent implements OnInit {
-
-  data:any;
-  constructor(private shipDetails:ShipDetailsService,) { }
+ 
+  @Input () info! : Shipping;
+ 
+  constructor() { }
 
   ngOnInit(): void {
-    this.shipDetails.dataEvent.subscribe(res => {
-      if(!!res){
-        this.data = res;
-        console.log(this.data)
-      }
-    });
   }
 }

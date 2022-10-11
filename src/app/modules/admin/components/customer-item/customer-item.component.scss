@@ -1,0 +1,61 @@
+
+td{
+    text-align: center;
+}
+.container{
+    width: 60%;
+}
+
+    form {
+    border: 5px solid #7a7979;
+    }
+    input[type=text], input[type=password] {
+    width: 100%;
+    padding: 16px 8px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    }
+    .icon {
+    font-size: 110px;
+    display: flex;
+    justify-content: center;
+    color: rgb(121, 115, 120);
+    }
+    button {
+    background-color: #4286f4;
+    color: white;
+    padding: 14px 0;
+    margin: 10px 0;
+    border: none;
+    cursor: grab;
+    width: 48%;
+    }
+    h1 {
+    text-align:center;
+    font-size:18;
+    }
+    button:hover {
+    opacity: 0.8;
+    }
+    .formcontainer {
+    text-align: center;
+    margin: 14px 30px 2px;
+    }
+    .container {
+   
+    text-align:left;
+    }
+    span.psw {
+    float: right;
+    padding-top: 0;
+    padding-right: 15px;
+    }
+    /* Change styles for span on extra small screens */
+    @media screen and (max-width: 300px) {
+    span.psw {
+    display: block;
+    float: none;
+    }
+}

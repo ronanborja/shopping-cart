@@ -1,0 +1,67 @@
+<div class="pt-28 m-auto w-11/12 border">
+    
+  <div class="container">
+      <h2> Product's List</h2>
+      <ul class="responsive-table">
+          <button class="btn btn-primary ml-5" (click)="addNewProduct()"> New </button>
+          <br><br>
+        <li class="table-header">
+          <div class="col col-1">Product Id</div>
+          <div class="col col-1">Product Name</div>
+          <div class="col col-2">Image</div>
+          <div class="col col-4">Category</div>
+          <div class="col col-5">Price</div>
+          <div class="col col-6">Edit</div>
+          <div class="col col-7">Delete</div>
+
+        </li>
+        <li class="table-row" *ngFor="let data of products">
+          <div class="col col-1" data-label="productId">{{data.id}}</div>
+          <div class="col col-1" data-label="productName">{{data.productName}}</div>
+          <div class="col col-2" data-label="productImgUrl"><img style="width: 10vw;" src="{{data.productImgUrl}}"></div>
+          <div class="col col-4" data-label="productCategory">{{data.productCategory}}</div>
+          <div class="col col-5" data-label="productPrice">{{data.productPrice}}</div>
+          <div class="col col-6" data-label="Action">
+              <button class="btn btn-primary" (click)="edit(data.id)">Edit</button>
+          </div>
+          <div class="col col-7" data-label="Action">
+            <button routerLink="/product" class="btn btn-primary" (click)="delete(data.id)">Delete</button>
+        </div>
+        </li>
+      </ul>
+    </div>
+
+<!-- 
+<div class="pt-28">
+  <div class="pt-28 m-auto w-11/12 border">
+    <button class="btn btn-primary" (click)="addNewProduct()"> New </button>
+<table align="center" class="border-double border-2">
+    <thead>
+      <tr class="border-double border-2"> 
+        <th style="width: 20%;">Product Name</th>
+        <th style="width: 20%;">Image</th>
+        <th style="width: 20%;">Description</th>
+        <th style="width: 20%;">Price</th>
+        <th style="width: 20%;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of products;" >
+        <td> {{data.productName}}</td>
+        <td>
+          <img src="{{data.productImgUrl}}" > 
+        </td>
+        <td>{{data.productDescription}}</td>
+        <td> {{data.productPrice}}</td>
+        <td>
+            <button (click)="edit()"> Edit </button>
+            <button (click)="delete()"> Delete </button>
+        </td>
+    </tbody>
+  </table>
+</div>
+
+
+</div> -->
+
+

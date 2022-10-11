@@ -7,7 +7,7 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart-list.component.scss']
 })
 export class CartListComponent implements OnInit {
-
+  searchItem:string = "";
   products:any =[];
   total!:number;
 
@@ -18,6 +18,16 @@ export class CartListComponent implements OnInit {
       this.products = res;
       this.total = this.cartService.getTotalPrice();
     })
+  }
+
+  incrementQty(prod:any)
+  {
+    this.cartService.incrementQty(prod);
+  }
+
+  decrementQty(prod:any)
+  {
+    this.cartService.decrementQty(prod);
   }
 
   removeItem(prod:any){

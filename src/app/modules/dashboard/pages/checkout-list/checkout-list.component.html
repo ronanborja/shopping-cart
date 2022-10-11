@@ -1,20 +1,132 @@
 <div class="pt-28">
 <h1> Checkout</h1> 
-     <div class="p-3 m-auto w-11/12 border border-2">
-          <h2 class="card-title"> 
-               <button routerLink="/shiplist" class="fa fa-angle-right fa-2x" ng-model="msg"></button>
-               <app-ship-details></app-ship-details>
-          </h2> 
-     </div>
-     <div ng-hide="msg">
-          <h2> No Data</h2> 
-     </div>
+     <div class="m-auto w-11/12 border">
+          <h2>
+               <i class="fa fa-map-marker" style="font-size:30px;color:red"></i>
+                Delivery Address 
+           </h2>
+               <h4 class="ml-5">Shipping Information</h4>
+               <form [formGroup]="userInfo" >
+                 <div class="row g-3 ml-5">
+                   <div class="col-sm-6">
+                       <label for="firstName">First Name: </label> <br/>
+                       <input formControlName="firstName" type="text" id="firstName" placeholder="Enter first name..." class="form-control" required>
+                       <div class="alert" *ngIf="firstName?.errors?.['firstName']" class="alert alert-danger">Invalid email!</div>
+                   </div>
+       
+                   <div class="col-sm-6">
+                       <label for="lastName">Last Name: </label> <br/>
+                       <input formControlName="lastName" type="text" id="lastName" placeholder="Enter last name..." class="form-control" required>
+                       <div class="alert" *ngIf="lastName?.errors?.['lastName']" class="alert alert-danger">Invalid email!</div>
+                   </div>
+       
+                   <div class="col-sm-6">
+                       <label for="phoneNo">Mobile No: </label> <br/>
+                       <input formControlName="phoneNo" type="text" id="phoneNo" placeholder="Enter mobile number..." class="form-control" required>
+                       <div class="alert" *ngIf="phoneNo?.errors?.['phoneNo']" class="alert alert-danger">Invalid email!</div>
+                   </div>
+               </div>
+         
+           <h4 class="ml-5 mt-5">Address Details</h4>
+             
+               <div class="row g-3 ml-5">
+                 <div class="col-sm-6">
+                     <input formControlName="country" type="text" id="country" placeholder="Country" class="form-control" required><br>
+                     <div class="alert" *ngIf="country?.errors?.['country']" class="alert alert-danger">Invalid email!</div>
+                 </div>
+       
+                 <div class="col-sm-6">
+                     <input formControlName="province" type="text" id="province" placeholder="Province" class="form-control" required><br>
+                     <div class="alert" *ngIf="province?.errors?.['province']" class="alert alert-danger">Invalid email!</div>
+                 </div>
+       
+                 <div class="col-sm-6">
+                     <input formControlName="city" type="text" id="city" placeholder="City" class="form-control" required> <br>
+                     <div class="alert" *ngIf="city?.errors?.['city']" class="alert alert-danger">Invalid email!</div>
+                 </div>
+       
+                 <div class="col-sm-6">
+                   <input formControlName="barangay" type="text" id="barangay" placeholder="Barangay" class="form-control" required><br>
+                   <div class="alert" *ngIf="barangay?.errors?.['barangay']" class="alert alert-danger">Invalid email!</div>
+               </div>
+       
+               <div class="col-sm-6">
+                   <input formControlName="street" type="text" id="street" placeholder="Street, Building, House No" class="form-control" required>
+                   <br>
+                   <div class="alert" *ngIf="street?.errors?.['street']" class="alert alert-danger">Invalid email!</div>
+               </div>
+
+             </div>
+        
+
+           
+    
      
-     
-<h2> Product Details</h2>
-     <div *ngFor="let prod of products">
-    {{prod.productName}}
-     <strong>{{prod.productPrice}}</strong>
+     <div class="p-3 m-auto w-11/12 border"> 
+          <h2> Product Details</h2>
+               <table class="m-auto" >
+                    <thead>
+                         <tr>
+                             <th></th>
+                             <th>Product Name</th>
+                             <th>Price</th>
+                             <th>Quantity</th>
+                             <th>Subtotal</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr *ngFor="let prod of products">
+                              <td><img style="width: 10vw;" src="{{prod.productImgUrl}}"></td>
+                              <td>  {{prod.productName}} </td>
+                               <td> &#8369; {{prod.productPrice}} </td>
+                               <td> {{prod.productQuantity}}</td>
+                               <td> <strong> &#8369; {{prod.productPrice * prod.productQuantity}}</strong> </td>
+                         </tr> 
+
+                         </tbody>
+                    </table>
+     </div>    
+     <div class="p-3 m-auto w-11/12 border"> 
+          <table>
+               <tr>
+                    <th style="width:40%"> Shipping Courier:</th>
+                    <th style="width:30%">
+                         <h2> Standard Local</h2>
+                         <p>  A&B Express </p>
+                         <p> Receive in 5-7 days</p>
+                    </th>
+                    <th style="width:60%"> 
+                         <h3> &#8369; 55  </h3>
+                    <th> 
+               </tr>
+          </table>
+          <table>
+               <tr>
+                    <td> Order total ({{totalItem}} items): &#8369;  {{total}} </td>
+               </tr>
+          </table>     
      </div>
-</div>                 
+     <div class="p-3 m-auto w-11/12 border"> 
+          <div class="e-input-group">
+               <h3 class="input-group mb-3"> Payment Option:  
+                    <span>
+                         <input type="checkbox"> Cash on Delivery 
+                         <input type="checkbox" disabled > E-Wallet 
+                         <input type="checkbox" disabled > Linked Bank Account
+                    </span></h3>
+          </div>
+     </div>
+     <br>
+     <div class="p-3 m-auto w-11/12 border"> 
+          <div class="card-total">
+               <h4> Subtotal: &#8369; {{total1}}</h4>
+               <h4> Shipping total: &#8369; 55 </h4>
+               <h2> Total Payment:  &#8369; {{total}}</h2>
+          </div>
+           <button routerLink="/pending" class="btn btn-primary" (click)="checkOut()"> Place Order </button>
+     </div>
+     </form> 
+ </div>
+</div>
+           
      

@@ -1,0 +1,64 @@
+<div class="pt-28 m-auto w-11/12 border">
+    
+<div class="container">
+    <h2> User's List</h2>
+    <ul class="responsive-table">
+        <button class="btn btn-primary ml-5" (click)="addNewUser()"> New </button>
+        <br><br>
+      <li class="table-header">
+        <div class="col col-2">Name</div>
+        <div class="col col-3">Email</div>
+        <div class="col col-4">Action</div>
+      </li>
+      <li class="table-row" *ngFor="let data of info">
+        <div class="col col-2" data-label="Name">{{data.fullName}}</div>
+        <div class="col col-3" data-label="Email">{{data.email}}</div>
+        <div class="col col-4" data-label="Action">
+            <button class="btn btn-primary" (click)="deActivate()">Deactivate</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+
+<!-- 
+
+<table align="center" class="border-double border-2">
+    <thead>
+      <tr class="border-double border-2"> 
+        <th style="width: 40%;">Name</th>
+        <th style="width: 40%;">Email</th>
+        <th style="width: 40%;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of info">
+        <td> {{data.fullName}}</td>
+        <td> {{data.email}}</td>
+        <td >
+            <button class="btn btn-primary" (click)="deActivate()">Deactivate</button>
+        </td>
+        <td >
+    </tbody>
+  </table>
+</div> -->
+
+
+
+
+
+<!-- <div class="pt-28 m-auto w-11/12 border">
+    <table>
+        <tr>
+            <th > Name</th>
+            <th > Email</th>
+            <th > Action</th> 
+        </tr>
+       
+             <!-- <tr *ngFor="let data of info" >
+               <td> <app-customer-item [infos]="data"></app-customer-item> </td>
+            </tr>
+         -->
+        
+    <!-- </table>
+</div>  -->
