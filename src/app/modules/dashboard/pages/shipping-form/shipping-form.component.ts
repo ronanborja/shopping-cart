@@ -22,7 +22,6 @@ userInfo = new FormGroup({
   barangay:new FormControl(''),
   street:new FormControl(''),
 })
-displayData = [];
 
   constructor(private fb: FormBuilder,
     private shippingService:ShippingService ) { }

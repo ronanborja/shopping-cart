@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/modules/profile/service/api.service';
-import { SignupModel } from 'src/app/modules/profile/pages/registration-form/signup.model';
 import { Router } from '@angular/router';
+import { Profile } from 'src/app/modules/profile/models/profile';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CustomerComponent implements OnInit {
 
-  info:SignupModel[] = [];
+  info:Profile[] = [];
   constructor(private apiService: ApiService,
     private router:Router) { }
 
@@ -20,12 +20,11 @@ export class CustomerComponent implements OnInit {
       this.info = res;
     })
   }
-  deActivate()
-{
 
-}
 
 addNewUser()
 {
   this.router.navigateByUrl('/form');
-}}
+}
+
+}

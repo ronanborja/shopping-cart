@@ -1,9 +1,13 @@
 export class SignupModel {
-    id : number = 0;
-    fullName : string = '';
+    id:any;
+    firstName: string= '';
+    middleName: string='';
+    lastName : string = '';
     email : string = '';
+    userName: string='';
     password : string = '';
-    mobile : number = 0;
+    confirmPass: string= '';
+    mobile : string = '';
   }
   
   

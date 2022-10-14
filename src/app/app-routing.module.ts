@@ -15,6 +15,7 @@ import { RegistrationFormComponent } from './modules/profile/pages/registration-
 import { ProductFormComponent } from './modules/admin/components/product-form/product-form.component';
 import { RoleGuard } from './core/guards/role.guard';
 import { EditFormComponent } from './modules/admin/components/edit-form/edit-form.component';
+import { ProfilePageComponent } from './modules/profile/pages/profile-page/profile-page.component';
 const routes: Routes = [
   {
     path: '',
@@ -23,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/product.module').then(m => m.ProductModule)
+    loadChildren: () => import('./modules/dashboard/product.module').then(m => m.ProductModule),canActivate:[AuthGuard]
   },
   {
     path: 'admin',
@@ -84,6 +85,10 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component:EditFormComponent
+  },
+  {
+    path:'profile/:id',
+    component: ProfilePageComponent
   }
 ];
 

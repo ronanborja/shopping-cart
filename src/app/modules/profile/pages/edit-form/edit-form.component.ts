@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SignupModel } from '../registration-form/signup.model';
 
 @Component({
   selector: 'app-edit-form',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditFormComponent implements OnInit {
 
-  constructor() { }
+
+  constructor( private fb:FormBuilder) { 
+   
+  }
 
   ngOnInit(): void {
+    
   }
+
 
 }

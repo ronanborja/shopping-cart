@@ -16,7 +16,7 @@ constructor(private authService: AuthService, private router: Router) {
     if (this.authService.IsLoggedIn()) {
       return true;
     }
-    alert("You have not log in")
+    alert("You are not logged in.")
     this.router.navigate(['login']);
     return false;
   }

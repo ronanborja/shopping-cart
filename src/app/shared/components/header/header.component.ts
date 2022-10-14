@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CartService } from 'src/app/modules/dashboard/services/cart.service';
 import { ProductService} from 'src/app/modules/dashboard/services/product.service';
 import { AuthService } from './../../../modules/profile/service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,10 @@ export class HeaderComponent implements OnInit {
   @Output() searchItem= new EventEmitter<any>();
   public searchInput: string = '';
   totalItem :number = 0;
-  constructor(private cartService:CartService,private productService:ProductService, private authService: AuthService) {  }
+  constructor(private cartService:CartService,
+    private productService:ProductService, 
+    private authService: AuthService,
+    private route:Router) {  }
 
   ngOnInit(): void {
     
@@ -32,7 +36,8 @@ export class HeaderComponent implements OnInit {
 }
 
 toggleDarkTheme(): void {
-  document.body.classList.toggle('dark-theme');
+    document.body.classList.toggle('dark-theme');
+  // document.body.classList.toggle('dark-theme');
 }
 
 isLoggedin() {
@@ -46,7 +51,8 @@ isLoggedin() {
 
 logout() {
   localStorage.clear();
-  alert("Logout success!!")
+  alert("Logout success!!");
+  this.route.navigateByUrl('/login')
 }
 
 isUser() {
@@ -56,5 +62,13 @@ isUser() {
   }
    return true;
 }
-
+userList(){
+  this.route.navigateByUrl('/users')
+}
+productList(){
+  this.route.navigateByUrl('/product')
+}
+dashBoard(){
+  this.route.navigateByUrl('/dashboard')
+}
 }

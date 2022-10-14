@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const MaterialComponents = [
   MatSelectModule,
@@ -37,7 +37,8 @@ const MaterialComponents = [
     FormsModule,
     RouterModule,
     NgxSliderModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule
    
   ],
   providers: [],

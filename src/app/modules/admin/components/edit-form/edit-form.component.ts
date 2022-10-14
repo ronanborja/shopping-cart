@@ -15,6 +15,7 @@ export class EditFormComponent implements OnInit {
     productName: new FormControl('', [Validators.required]),
     productCategory: new FormControl('', [Validators.required]),
     productPrice: new FormControl('', [Validators.required]),
+    productQuantity: new FormControl('', [Validators.required]),
     productImgUrl: new FormControl('', [Validators.required])
   })
 
@@ -34,6 +35,7 @@ export class EditFormComponent implements OnInit {
         productName: new FormControl(res ['productName']),
         productCategory: new FormControl(res ['productCategory']),
         productPrice: new FormControl(res ['productPrice']),
+        productQuantity: new FormControl(res ['productQuantity']),
         productImgUrl: new FormControl(res ['productImgUrl'])
       })
     })
@@ -46,5 +48,7 @@ export class EditFormComponent implements OnInit {
       this.router.navigateByUrl('/product');
     })
   }
+
+  
 
 }

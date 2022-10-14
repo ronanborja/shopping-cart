@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { CartListComponent } from './pages/cart-list/cart-list.component';
-import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { CheckoutListComponent } from './pages/checkout-list/checkout-list.component';
-import { CheckoutItemComponent } from './components/checkout-item/checkout-item.component';
 import { PendingListComponent } from './pages/pending-list/pending-list.component';
 import { ProductRoutingModule } from './product-routing.module';
 import { MatSelectModule} from '@angular/material/select';
@@ -22,6 +20,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ProfilePageComponent } from '../profile/pages/profile-page/profile-page.component';
 import { ProductPipe } from 'src/app/shared/pipe/filter.pipe';
+
 const MatComponents = [
   MatSelectModule,
   MatFormFieldModule,
@@ -34,15 +33,13 @@ const MatComponents = [
     ProductListComponent,
     ProductItemComponent,
     CartListComponent,
-    CartItemComponent,
     CheckoutListComponent,
-    CheckoutItemComponent,
     PendingListComponent,
     CheckoutFormComponent,
     ShippingItemComponent,
     ShippingFormComponent,
     ShipDetailsComponent,
-    ProductPipe
+    ProductPipe,
   ],
   imports: [
     CommonModule,

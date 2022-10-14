@@ -1,7 +1,7 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
-<div class="pt-28">
+<div class="pt-10">
     <div class="container">
     <form [formGroup]="addUsers">
         <h1 class="pt-7">ADD USER</h1>
@@ -10,17 +10,70 @@
         </div>
         <div class="formcontainer">
         <div class="container">
-            <label for="firstName">Full Name: </label> <br/>
-            <input formControlName="fullName" type="text" id="fullName" placeholder="Enter first name..." class="form-control" required>
-            <label for="lastName">Email: </label> <br/>
-            <input formControlName="email" type="text" id="email" placeholder="Enter email..." class="form-control" required>
-            <label for="password">Password: </label> <br/>
-            <input formControlName="password" type="text" id="password" placeholder="Enter password..." class="form-control" required>
-            <label for="phoneNo">Mobile No: </label> <br/>
-          <input formControlName="mobile" type="text" id="mobile" placeholder="Enter mobile number..." class="form-control" required>
+       
+            <div class="mb-3">
+              <label class="form-label">First Name</label>
+              <input type="text" formControlName="firstName" class="form-control">
+              <span class="text-danger"
+              *ngIf="addUsers.controls['firstName'].dirty && addUsers.hasError('required', 'firstName')">
+              *First Name is required!</span>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Middle Name</label>
+              <input type="text" formControlName="middleName" class="form-control">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Last Name</label>
+              <input type="text" formControlName="lastName" class="form-control">
+              <span class="text-danger"
+              *ngIf="addUsers.controls['lastName'].dirty && addUsers.hasError('required', 'lastName')">
+              *Last Name is required!</span>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" formControlName="email" class="form-control">
+              <span class="text-danger"
+              *ngIf="addUsers.controls['email'].dirty && addUsers.hasError('required', 'email')">
+              Email is required!</span>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Username</label>
+              <input type="text" formControlName="password" class="form-control">
+              <span class="text-danger"
+              *ngIf="addUsers.controls['userName'].dirty && addUsers.hasError('required', 'userName')">
+              *Username is required!</span>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="text" formControlName="password" class="form-control">
+              <span class="text-danger"
+              *ngIf="addUsers.controls['password'].dirty && addUsers.hasError('required', 'password')">
+              *Password is required!</span>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Confirm Password</label>
+              <input type="text" formControlName="confirmPassword" class="form-control">
+              <span class="text-danger"
+              *ngIf="addUsers.controls['confirmPassword'].dirty && addUsers.hasError('required', 'confirmPassword')">
+              *Password is required!</span>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Mobile Number</label>
+              <input type="number" formControlName="mobile" class="form-control">
+              <span class="text-danger"
+              *ngIf="addUsers.controls['mobile'].dirty && addUsers.hasError('required', 'mobile')">
+              *Mobile Number is required!</span>
+            </div>
+            <button (click)="submit()" type="submit"><strong>Create Account</strong></button>
         </div>
-        <button (click)="submit()" type="submit"><strong>Create Account</strong></button>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
+  </div>
 </div>

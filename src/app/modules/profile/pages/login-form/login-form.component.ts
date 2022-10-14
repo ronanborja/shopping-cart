@@ -31,10 +31,11 @@ export class LoginFormComponent implements OnInit {
         alert("Login Success!!");
         // this.loginForm.reset();
         localStorage.setItem('token', "qwertyuioplkjhgfdsazxcvbnm");
+        localStorage.setItem('email',this.loginForm.value.email);
         if(this.loginForm.value.email=="admin123@email.com")
         {
           localStorage.setItem('userType', 'admin');
-          this.router.navigate(['home']);
+          this.router.navigate(['dashboard']);
         }
         else
         {

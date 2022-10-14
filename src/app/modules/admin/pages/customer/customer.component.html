@@ -1,29 +1,192 @@
-<div class="pt-28 m-auto w-11/12 border">
+
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+<div class="container mt-3 mb-4">
+<div class="col-lg-9 mt-4 mt-lg-0">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
+         
+            <thead>
+              <tr>
+                <li class="table-header">
+                  <div class="col col-2">Name</div>
+                  <div class="col col-3">Email</div>
+                  <div class="col col-4">Action</div>
+                </li>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <div *ngFor="let data of info">
+              <tr class="candidates-list">
+                <td class="title">
+                  <div class="thumb">
+                    <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                  </div>
+                  <div class="candidate-list-details">
+                    <div class="candidate-list-info">
+                      <div class="candidate-list-title">
+                        <h3 class="mb-0"><a href="#">{{data.firstName}} {{data.lastName}}</a></h3>
+                      </div>
+                      <div class="candidate-list-option">
+                        <ul class="list-unstyled">
+                          <li class="mr-10"><i class="fas fa-filter pr-1"></i>{{data.mobile}}</li><br>
+                        
+                        </ul>
+                        <ul class="list-unstyled">
+                         
+                          <li><i class="fas fa-map-marker-alt pr-1"></i>{{data.email}}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="mx-8" >
+                  <a class="candidate-list-favourite order-2 text-danger" href="#"><i class="fas fa-heart"></i></a>
+                  <span class="candidate-list-time order-1">{{data.userName}}</span>
+                </td>
+                <td class="justify-self-end">
+                  <ul class="list-unstyled mb-0 d-flex justify-content-end">
+                    <li><a href="#" class="text-primary" data-toggle="tooltip" title="" data-original-title="view"><i class="far fa-eye"></i></a></li>
+                    <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
+                    <li><a href="#" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
+                  </ul>
+                </td>
+              </tr>
+            </div>
+            </tbody>
+          
+         
+          <div class="text-center mt-3 mt-sm-3">
+            <ul class="pagination justify-content-center mb-0">
+              <li class="page-item disabled"> <span class="page-link">Prev</span> </li>
+              <li class="page-item active" aria-current="page"><span class="page-link">1 </span> <span class="sr-only">(current)</span></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">...</a></li>
+              <li class="page-item"><a class="page-link" href="#">25</a></li>
+              <li class="page-item"> <a class="page-link" href="#">Next</a> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- <div class="container mt-3 mb-4">
+<div class="col-lg-9 mt-4 mt-lg-0">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
+          <table class="table manage-candidates-top mb-0">
+            <thead>
+              <tr>
+                <th>User's Name</th>
+                <th class="text-center">Username</th>
+                <th class="action text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            <div *ngFor="let data of info">
+              <tr class="candidates-list">
+                <td class="title">
+                  <div class="thumb">
+                    <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                  </div>
+                  <div class="candidate-list-details">
+                    <div class="candidate-list-info">
+                      <div class="candidate-list-title">
+                        <h5 class="mb-0"><a href="#">{{data.firstName}} {{data.lastName}}</a></h5>
+                      </div>
+                      <div class="candidate-list-option">
+                        <ul class="list-unstyled">
+                          <li><i class="fas fa-filter pr-1"></i>{{data.email}}</li>
+                          <li><i class="fas fa-map-marker-alt pr-1"></i>{{data.userName}}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="candidate-list-favourite-time text-center ml-20">
+                  <a class="candidate-list-favourite order-2 text-danger" href="#"><i class="fas fa-heart"></i></a>
+                  <span class="candidate-list-time order-1">Shortlisted</span>
+                </td>
+                <td>
+                  <ul class="list-unstyled mb-0 d-flex justify-content-end">
+                    <li><a href="#" class="text-primary" data-toggle="tooltip" title="" data-original-title="view"><i class="far fa-eye"></i></a></li>
+                    <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
+                    <li><a href="#" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
+                  </ul>
+                </td>
+              </tr>
+            </div>
+            </tbody>
+          </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  
+
+
+
+
+
     
-<div class="container">
+<div class="center">
     <h2> User's List</h2>
     <ul class="responsive-table">
         <button class="btn btn-primary ml-5" (click)="addNewUser()"> New </button>
         <br><br>
       <li class="table-header">
+        <div class="col col-1"></div>
         <div class="col col-2">Name</div>
         <div class="col col-3">Email</div>
-        <div class="col col-4">Action</div>
+        
       </li>
-      <li class="table-row" *ngFor="let data of info">
-        <div class="col col-2" data-label="Name">{{data.fullName}}</div>
-        <div class="col col-3" data-label="Email">{{data.email}}</div>
-        <div class="col col-4" data-label="Action">
-            <button class="btn btn-primary" (click)="deActivate()">Deactivate</button>
+      <li class="table-row justify-items-start" *ngFor="let data of info">
+        <div class="col col-1">
+          <div class="thumb">
+            <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+          </div>
         </div>
+        <div class="col col-2" data-label="Name">
+          
+          <h4>{{data.firstName}}</h4>
+        </div>
+        <div class="col col-3" data-label="Email">{{data.email}}</div>
+        
       </li>
     </ul>
   </div>
 
+  <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
+    <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                <span class="sr-only">Close modal</span>
+            </button>
+            <div class="p-6 text-center">
+                <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Do you want to deactivite this user?</h3>
+                <button data-modal-toggle="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                    Yes, I'm sure
+                </button>
+                <button data-modal-toggle="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+            </div>
+        </div>
+    </div>
+</div> 
 
-<!-- 
 
-<table align="center" class="border-double border-2">
+
+
+<!-- <table align="center" class="border-double border-2">
     <thead>
       <tr class="border-double border-2"> 
         <th style="width: 40%;">Name</th>
@@ -40,8 +203,8 @@
         </td>
         <td >
     </tbody>
-  </table>
-</div> -->
+  </table> -->
+
 
 
 

@@ -10,87 +10,447 @@
 
 
 <!-- Dashboard -->
-  <div class="flex justify-around space-x-20 top-40 relative">
-    <aside class="w-64" aria-label="Sidebar">
-      <!-- Side Nav-->
-     <div class="pt-28 overflow-y-visible py-4 px-3 bg-pink-50 rounded dark:bg-gray-800">
-        <div class="flex items-center pl-2.5 mb-4">
-           <img src="https://cdn-icons-png.flaticon.com/512/107/107799.png" class="mr-3 h-6 sm:h-7" alt="Filter" />
-           <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Filter By</span>
-        </div>
-        <ul class="space-y-4">
-           <li>
-             <span (click)="toggle()" class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 cursor-pointer" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                   <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" >
-                     <path fill-rule="evenodd" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" clip-rule="evenodd"/></svg>
-                   <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Category</span>
-                   <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-             </span>
-             
-             <ul id="category-dropdown" class="py-2 space-y-2 cursor-pointer" *ngIf="show" >
-                <li (click)="categoryFilterChange('')"><a class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">All</a></li>
-               <li *ngFor="let category of categories" (click)="categoryFilterChange(category)">
-                 <a class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">{{ category }}</a>
-               </li>          
-             </ul>
-          </li>
-          <li>
-           </li>
-           <li>
-              <span class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
-                 <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
-                 <span class="flex-1 ml-3 whitespace-nowrap">Price Range</span>
-              </span>
-           </li>
-           <li>
-           <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (keydown.ArrowLeft)="priceFilterChange($event)" (keydown.ArrowRight)="priceFilterChange($event)" (click)="priceFilterChange($event)"></ngx-slider>
-         </li>
-         </ul>
- 
-        <ul class="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
-            <a class="flex items-center pl-2.5 mb-5">
-           <img src="https://www.pngfind.com/pngs/m/495-4952598_png-file-svg-sort-by-icon-png-transparent.png" class="mr-3 h-6 sm:h-7" alt="Flowbite Logo" />
-           <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Sort By</span>
-        </a>
-     
-         <li>
-            <span class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group cursor-pointer">
-             <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
-               <span class="ml-3" (click)="doSort('Name')">Name</span>
-            </span>
-         </li>
-         <li>
-           <span class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group cursor-pointer">
-             <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z" clip-rule="evenodd"></path></svg>
-             <span class="ml-3" (click)="doSort('Price')">Price</span>
-             </span>
-        </li>       
+<div *ngIf="!isUser">
+<div class="flex justify-around left-10 relative">
+  <aside class="w-auto mr-9 mt-20 border-2 border-black rd" aria-label="Sidebar" *ngIf="isUser()">
+    <!-- Side Nav-->
+    <div class="overflow-y-visible p-10 bg-orange-frenzy rounded dark:bg-gray-800 ">
+      <div class="flex items-center pl-2.5 mb-4">
+        <img src="https://cdn-icons-png.flaticon.com/512/107/107799.png" class="mr-3 h-6 sm:h-7" alt="Filter" />
+        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Filter By</span>
+      </div>
+      <ul class="space-y-4">
+        <li>
+          <span (click)="toggle()"
+            class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 cursor-pointer"
+            aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+            <svg aria-hidden="true"
+              class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-6 h-6">
+              <path fill-rule="evenodd"
+                d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Category</span>
+            <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+
+          <ul id="category-dropdown" class="py-2 space-y-2 cursor-pointer" *ngIf="show">
+            <li (click)="categoryFilterChange('')"><a
+                class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">All</a>
+            </li>
+            <li *ngFor="let category of categories" (click)="categoryFilterChange(category)">
+              <a
+                class="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">{{
+                category }}</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+        </li>
+        <li>
+          <span
+            class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+            <svg aria-hidden="true"
+              class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <span class="flex-1 ml-3 whitespace-nowrap">Price Range</span>
+          </span>
+        </li>
+        <li>
+          <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"
+            (keydown.ArrowLeft)="priceFilterChange($event)" (keydown.ArrowRight)="priceFilterChange($event)"
+            (click)="priceFilterChange($event)"></ngx-slider>
+        </li>
       </ul>
-     </div>
+
+      <ul class="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
+        <a class="flex items-center pl-2.5 mb-5">
+          <img src="https://www.pngfind.com/pngs/m/495-4952598_png-file-svg-sort-by-icon-png-transparent.png"
+            class="mr-3 h-6 sm:h-7" alt="Flowbite Logo" />
+          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Sort By</span>
+        </a>
+
+        <li>
+          <span
+            class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group cursor-pointer">
+            <svg aria-hidden="true"
+              class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <span class="ml-3" (click)="doSort(0)">Name</span>
+          </span>
+        </li>
+        <li>
+          <span
+            class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group cursor-pointer">
+            <svg aria-hidden="true"
+              class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <span class="ml-3" (click)="doSort(1)">Price</span>
+          </span>
+        </li>
+
+      </ul>
+    </div>
   </aside>
-<!--List of Products-->
-  <div class="min-w-max">
-    <div class="grid place-items-center min-w-full">
-      <div class="container">
+
+  <!-- List of Top Products-->
+  <div class="container" *ngIf="!isUser()">
+    <div class="min-w-max">
+      <div class="grid place-items-center min-w-full">
+        <div class="container ">
+          <div class="border-b border-gray-200 pt-24 pb-6">
+            <h2 *ngIf="!isUser()">FEATURED PRODUCTS</h2>
+          </div>
+          <div class="grid">
+            <div class="row" *ngIf="!isUser()">
+              <!-- <ng-container *ngFor="let prod of topProducts"> -->
+                <ng-container *ngFor="let prod of products">
+                <div class="card col-md-3"> 
+                  <br />
+                  <app-product-item [product]="prod"></app-product-item>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <!--List of Products-->
           <div class="row">
             <ng-container *ngFor="let prod of products | filter:searchItem">
-              <div class="card col-md-3">
-                <br /><app-product-item [product]="prod"></app-product-item>
-                <button (click)="addToCart(prod)" *ngIf="isUser()"><i style="font-size: 24px" class="fa fa-cart-plus px-2"></i>Add to Cart!</button><br />
+              <div class="card col-md-3 min-height-max">
+                <br />
+                <app-product-item [product]="prod"></app-product-item>
+                <button (click)="addToCart(prod)" *ngIf="isUser()"><i style="font-size: 24px"
+                    class="fa fa-cart-plus px-2"></i>Add to Cart!</button>
               </div>
             </ng-container>
           </div>
         </div>
-        
-  </div>
-  <ng-container *ngIf="products.length === 0">
-    <div class="container flex items-center pl-2.5 mb-4">
-        <div class="center">
+      </div>
+      <ng-container *ngIf="products?.length === 0">
+        <div class="container flex items-center pl-2.5 mb-4">
+          <div class="center">
             <img class="px-10" src="https://eonbazar.com/images/npf.jpg">
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+
+  <div class="border-10 border-gray-200 pt-24 pb-2" *ngIf="isUser()">
+    <!--List of Products-->
+    <div class="row">
+      <ng-container *ngFor="let prod of products | filter:searchItem">
+        <div class="card col-md-3">
+          <br />
+          <app-product-item [product]="prod"></app-product-item>
+          <button (click)="addToCart(prod)" *ngIf="isUser()"><i style="font-size: 24px"
+              class="fa fa-cart-plus px-2"></i>Add to Cart!</button><br />
+        </div>
+      </ng-container>
+    </div>
+    <ng-container *ngIf="products?.length === 0">
+      <div class="container flex items-center pl-2.5 mb-4">
+        <div class="center">
+          <img class="px-10" src="https://eonbazar.com/images/npf.jpg">
         </div>
       </div>
     </ng-container>
-    
 
-
+  </div>
 </div>
+</div>
+
+
+<div class="bg-white">
+  <div>
+    <!--
+      Mobile filter dialog
+
+      Off-canvas filters for mobile, show/hide based on off-canvas filters state.
+    -->
+    <div class="relative z-40 lg:hidden" role="dialog" aria-modal="true">
+      <!--
+        Off-canvas menu backdrop, show/hide based on off-canvas menu state.
+
+        Entering: "transition-opacity ease-linear duration-300"
+          From: "opacity-0"
+          To: "opacity-100"
+        Leaving: "transition-opacity ease-linear duration-300"
+          From: "opacity-100"
+          To: "opacity-0"
+      -->
+      <div class="fixed inset-0 bg-black bg-opacity-25"></div>
+
+      <div class="fixed inset-0 z-40 flex">
+        <!--
+          Off-canvas menu, show/hide based on off-canvas menu state.
+
+          Entering: "transition ease-in-out duration-300 transform"
+            From: "translate-x-full"
+            To: "translate-x-0"
+          Leaving: "transition ease-in-out duration-300 transform"
+            From: "translate-x-0"
+            To: "translate-x-full"
+        -->
+        <div
+          class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
+          <div class="flex items-center justify-between px-4">
+            <h2 class="text-lg font-medium text-gray-900">Filters</h2>
+            <button type="button"
+              class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400">
+              <span class="sr-only">Close menu</span>
+              <!-- Heroicon name: outline/x-mark -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <form class="mt-4 border-t border-gray-200">
+           
+
+            <div class="border-t border-gray-200 px-4 py-6">
+              <h3 class="-mx-2 -my-3 flow-root">
+                <!-- Expand/collapse section button -->
+              
+              </h3>
+              <div class="pt-6" id="filter-section-mobile-0">
+                <div class="space-y-6">
+                  <div class="flex items-center">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="border-t border-gray-200 px-4 py-6">
+              <h3 class="-mx-2 -my-3 flow-root">
+                <!-- Expand/collapse section button -->
+                <button type="button"
+                  class="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500"
+                  aria-controls="filter-section-mobile-1" aria-expanded="false">
+                  <span class="font-medium text-gray-900">Category</span>
+                  <span class="ml-6 flex items-center">
+                    <!--
+                      Expand icon, show/hide based on section open state.
+
+                      Heroicon name: mini/plus
+                    -->
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                      aria-hidden="true">
+                      <path
+                        d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                    </svg>
+                    <!--
+                      Collapse icon, show/hide based on section open state.
+
+                      Heroicon name: mini/minus
+                    -->
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                      aria-hidden="true">
+                      <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H3.75A.75.75 0 013 10z"
+                        clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <!-- Filter section, show/hide based on section state. -->
+          
+            </div>
+
+            <div class="border-t border-gray-200 px-4 py-6">
+              <h3 class="-mx-2 -my-3 flow-root">
+                <!-- Expand/collapse section button -->
+                <button type="button"
+                  class="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500"
+                  aria-controls="filter-section-mobile-2" aria-expanded="false">
+                  <span class="font-medium text-gray-900">Size</span>
+                  <span class="ml-6 flex items-center">
+                    <!--
+                      Expand icon, show/hide based on section open state.
+
+                      Heroicon name: mini/plus
+                    -->
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                      aria-hidden="true">
+                      <path
+                        d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                    </svg>
+                    <!--
+                      Collapse icon, show/hide based on section open state.
+
+                      Heroicon name: mini/minus
+                    -->
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                      aria-hidden="true">
+                      <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H3.75A.75.75 0 013 10z"
+                        clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                </button>
+              </h3>
+              <!-- Filter section, show/hide based on section state. -->
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <main class="center" >
+      <div class="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900" *ngIf="isUser()">Products</h1>
+
+        <div class="flex items-center">
+          <div class="relative inline-block text-left">
+            <h1 class="text-4xl px-20 font-bold tracking-tight text-gray-900" *ngIf="!isUser()">Products</h1>
+            <div (mouseenter)="toggle()" *ngIf="isUser()">
+              <span class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
+                id="menu-button" aria-expanded="false" aria-haspopup="true">
+                Sort
+                <!-- Heroicon name: mini/chevron-down -->
+                <svg class="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd" />
+                </svg>
+              </span>
+            </div>
+            <div *ngIf="show"
+              class="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
+              role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+              <div class="py-1" role="none">
+  
+                <a class="font-medium text-gray-900 block px-4 py-2 text-sm" style="text-decoration:none;" role="menuitem" tabindex="-1"
+                  id="menu-item-0" (click)="doSort(0)">Default</a>
+
+                <a class="text-gray-900 block px-4 py-2 text-sm no-underline" style="text-decoration:none;" role="menuitem" tabindex="-1"
+                  id="menu-item-1" (click)="doSort(1)">Name Ascending</a>
+
+                <span class="text-gray-900 block px-4 py-2 text-sm no-underline" style="text-decoration:none;" role="menuitem" tabindex="-1"
+                  id="menu-item-2" (click)="doSort(2)">Name Descending</span>
+
+                <a class="text-gray-900 block px-4 py-2 text-sm no-underline"style="text-decoration:none;" role="menuitem" tabindex="-1" id="menu-item-3"
+                  (click)="doSort(3)">Price: Low to High</a>
+
+                <a class="text-gray-500 block px-4 py-2 text-sm no-underline"style="text-decoration:none;" role="menuitem" tabindex="-1" id="menu-item-4"
+                  (click)="doSort(4)">Price: High to Low</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section aria-labelledby="products-heading" class="pt-6 pb-24">
+        <h2 id="products-heading" class="sr-only">Products</h2>
+
+        <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4" >
+          <!-- Filters -->
+          <form class="hidden lg:block" *ngIf="isUser()">
+            <h3 class="sr-only"></h3>
+            <ul role="list" class="space-y-4 border-b pb-6 text-sm font-medium text-gray-900">
+              <li *ngFor="let category of categories">
+                <a></a>
+              </li>
+            </ul>
+
+            <div class="border-b py-6">
+              <h3 class="-my-3 flow-root">
+                <button type="button"
+                  class="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500"
+                  aria-controls="filter-section-0" aria-expanded="false">
+                  <span class="font-medium text-gray-900">Price Range</span>
+                  <span class="ml-6 flex items-center">
+                  </span>
+                </button>
+              </h3>
+              <!-- Filter section, show/hide based on section state. -->
+              <div class="pt-6" id="filter-section-0">
+                <div class="space-y-4">
+                  <div class="flex items-center">
+                    <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"
+                      (keydown.ArrowLeft)="priceFilterChange($event)" (keydown.ArrowRight)="priceFilterChange($event)"
+                      (click)="priceFilterChange($event)"></ngx-slider>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="border-b border-gray-200 py-6">
+              <h3 class="-my-3 flow-root">
+                <!-- Expand/collapse section button -->
+                <button type="button"
+                  class="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500"
+                  aria-controls="filter-section-1" aria-expanded="false">
+                  <span class="font-medium text-gray-900">Category</span>
+
+                </button>
+              </h3>
+              <!-- Filter section, show/hide based on section state. -->
+              <div class="pt-6" id="filter-section-1" >
+                <div class="space-y-4">
+                  <label for="filter-category-1" class="ml-3 text-md font-medium text-gray-900" (click)="categoryFilterChange('')">All</label>
+                  <div class="flex items-center" *ngFor="let category of categories">
+                    <input id="filter-category-1" name="category[]" value="sale" type="checkbox"
+                      class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" (value)="category" hidden>
+                    <label for="filter-category-1" class="ml-3 text-md font-medium text-gray-900" (click)="categoryFilterChange(category)">{{category}}</label>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <!-- Product grid -->
+          <div class="lg:col-span-3">
+            <div class="min-w-max">
+              <div class="grid place-items-center min-w-full">
+                <div class="container">
+                  <div class="row">
+                    <ng-container *ngFor="let prod of products | filter:searchItem">
+                      <div class="card col-md-3" *ngIf="prod!==0">
+                        <br />
+                        <app-product-item [product]="prod"></app-product-item>
+                        <button (click)="addToCart(prod)" *ngIf="isUser()"><i style="font-size: 24px"
+                            class="fa fa-cart-plus px-2"></i>Add to Cart!</button><br />
+                      </div>
+                      <div *ngIf="prod===0">
+                        <div class="container flex items-center pl-2.5 mb-4">
+                          <div class="center">
+                            <img class="px-10" src="https://eonbazar.com/images/npf.jpg">
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+

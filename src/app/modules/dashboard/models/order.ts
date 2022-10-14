@@ -1,6 +1,7 @@
 export interface Order {
+    userId:string;
     id?:number;
-    products:any[];
-    total:number;
-    status:string;
+    date: Date;
+    quantity: number;
+    totalPrice: number;
 }

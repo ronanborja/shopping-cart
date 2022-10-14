@@ -5,13 +5,16 @@
   margin-top: 10px;
 }
 .navbar-custom {
-  //background-color: rgb(10, 231, 251);
-  //background-color: #020c30;
-  // background-color: #f7e7f1;
   position: fixed;
-//   top: 0;
   width: 100%;
-//   margin-bottom: 50px;
+}
+input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  width: 40vw;
+
 }
 
 // .search-icon {
@@ -27,3 +30,25 @@
 //   margin: 0px;
 // }
 
+
+  
+  /* Create four equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  button{
+    width: 20%;
+  }
+  .py-4{
+    margin-left: 10px;
+  }

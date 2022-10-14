@@ -17,6 +17,7 @@ export class ProductFormComponent implements OnInit {
     productName: new FormControl('', [Validators.required]),
     productCategory: new FormControl('', [Validators.required]),
     productPrice: new FormControl('', [Validators.required]),
+    productQuantity: new FormControl('', [Validators.required]),
     productImgUrl: new FormControl('', [Validators.required])
   })
 
@@ -28,12 +29,28 @@ export class ProductFormComponent implements OnInit {
   }
 
   submit(){
+    
     this.productService.saveProducts(this.addProducts.value).subscribe(res =>{
       console.log(res);
       this.router.navigateByUrl('/product');
     })
-    
- 
   }
+
+  get productName() {
+    return this.addProducts.get('productName') as FormControl;
+  }
+  get productCategory() {
+    return this.addProducts.get('productCategory') as FormControl;
+  }
+  get productPrice() {
+    return this.addProducts.get('productPrice') as FormControl;
+  }
+  get productQuantity() {
+    return this.addProducts.get('productQuantity') as FormControl;
+  }
+  get productImgUrl() {
+    return this.addProducts.get('productImgUrl') as FormControl;
+  }
+
 
 }
